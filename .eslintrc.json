@@ -3,6 +3,7 @@
         "es6": true,
         "node": true
     },
+    "globals": { "BigInt": false },
     "extends": ["eslint:recommended", "plugin:node/recommended"],
     "plugins": ["node"],
     "rules": {
@@ -75,7 +76,8 @@
         ],
         "func-style": [
             "error",
-            "declaration"
+            "declaration",
+            { "allowArrowFunctions": true }
         ],
         "function-paren-newline": "off",
         "generator-star-spacing": "error",
@@ -133,7 +135,7 @@
         "no-buffer-constructor": "error",
         "no-caller": "error",
         "no-catch-shadow": "error",
-        "no-confusing-arrow": "error",
+        "no-confusing-arrow": "off",
         "no-continue": "off",
         "no-div-regex": "error",
         "no-duplicate-imports": "error",
