@@ -13,14 +13,19 @@ const unsupportedFeatures = [
   "regexp-named-groups",
 
   // stage 3
-  "BigInt",
   "class-fields", "class-fields-public", "computed-property-names",
   "regexp-unicode-property-escapes",
   "regexp-lookbehind",
   "optional-catch-binding"
 ]
 
-const implementedFeatures = ["async-iteration", "object-rest", "object-spread"]
+const implementedFeatures = [
+  "async-iteration",
+  "BigInt",
+  "numeric-separator-literal",
+  "object-rest",
+  "object-spread",
+]
 
 run(
   (content, options) => parse(content, {sourceType: options.sourceType, ecmaVersion: 9, plugins: { stage3: true }}),

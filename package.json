@@ -21,7 +21,9 @@
   "dependencies": {
     "acorn": "^5.2.1",
     "acorn-async-iteration": "^0.1.0",
+    "acorn-bigint": "^0.2.0",
     "acorn-dynamic-import": "^2.0.2",
+    "acorn-numeric-separator": "^0.1.0",
     "acorn5-object-spread": "^5.0.0"
   },
   "version": "0.1.0",

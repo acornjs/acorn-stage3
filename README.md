@@ -9,16 +9,16 @@ It implements support for current [ECMAScript stage 3 proposals](https://github.
 - [Asynchronous Iterators for JavaScript](https://github.com/tc39/proposal-async-iteration) ([ESTree](https://github.com/estree/estree/blob/master/experimental/async-iteration.md)) via [acorn-async-iteration](https://www.npmjs.org/package/acorn-async-iteration)
 - [Object Rest/Spread Properties for ECMAScript](https://github.com/tc39/proposal-object-rest-spread) ([ESTree](https://github.com/estree/estree/blob/master/experimental/rest-spread-properties.md)) via [acorn5-object-spread](https://www.npmjs.org/package/acorn5-object-spread)
 - [import()](https://github.com/tc39/proposal-dynamic-import) ([ESTree](https://github.com/estree/estree/blob/master/experimental/import-expression.md)) via [acorn-dynamic-import](https://www.npmjs.com/package/acorn-dynamic-import)
+- [BigInt: Arbitrary precision integers in JavaScript](https://github.com/tc39/proposal-bigint) ([ESTree](https://github.com/estree/estree/pull/179)) via [acorn-bigint](https://www.npmjs.org/package/acorn-bigint)
+- [Numeric Separators](https://github.com/tc39/proposal-numeric-separator) via [acorn-numeric-separator](https://www.npmjs.org/package/acorn-numeric-separator)
 
 The following stage 3 proposals are not yet implemented:
 
 - [RegExp Lookbehind Assertions](https://github.com/tc39/proposal-regexp-lookbehind)
 - [Unicode property escapes in regular expressions](https://github.com/tc39/proposal-regexp-unicode-property-escapes)
-- [BigInt: Arbitrary precision integers in JavaScript](https://github.com/tc39/proposal-bigint)
 - [Optional catch binding](https://github.com/tc39/proposal-optional-catch-binding) ([ESTree](https://github.com/estree/estree/blob/master/experimental/optional-catch-binding.md))
 - [import.meta](https://github.com/tc39/proposal-import-meta)
 - [Private methods and getter/setters for JavaScript classes](https://github.com/tc39/proposal-private-methods)
-- [Numeric Separators](https://github.com/tc39/proposal-numeric-separator)
 - [Class field declarations](https://github.com/tc39/proposal-class-fields) (Only public fields, private fields and methods, not the static fields, since they are stage 2)
 
 ## Usage
