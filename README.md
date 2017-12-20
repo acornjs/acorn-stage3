@@ -6,9 +6,9 @@ This is a plugin for [Acorn](http://marijnhaverbeke.nl/acorn/) - a tiny, fast Ja
 
 It implements support for current [ECMAScript stage 3 proposals](https://github.com/tc39/proposals/blob/master/README.md#stage-3). Neither loose mode nor walk are currently supported.
 
-- [Asynchronous Iterators for JavaScript](https://github.com/tc39/proposal-async-iteration) ([ESTree](https://github.com/estree/estree/blob/master/experimental/async-iteration.md)) via [acorn-async-iteration](https://github.com/adrianheine/acorn-async-iteration)
-- [Object Rest/Spread Properties for ECMAScript](https://github.com/tc39/proposal-object-rest-spread) ([ESTree](https://github.com/estree/estree/blob/master/experimental/rest-spread-properties.md)) via [acorn5-object-spread](https://github.com/adrianheine/acorn5-object-spread)
-- [import()](https://github.com/tc39/proposal-dynamic-import) ([ESTree](https://github.com/estree/estree/blob/master/experimental/import-expression.md)) via [acorn-dynamic-import](https://github.com/kesne/acorn-dynamic-import)
+- [Asynchronous Iterators for JavaScript](https://github.com/tc39/proposal-async-iteration) ([ESTree](https://github.com/estree/estree/blob/master/experimental/async-iteration.md)) via [acorn-async-iteration](https://www.npmjs.org/package/acorn-async-iteration)
+- [Object Rest/Spread Properties for ECMAScript](https://github.com/tc39/proposal-object-rest-spread) ([ESTree](https://github.com/estree/estree/blob/master/experimental/rest-spread-properties.md)) via [acorn5-object-spread](https://www.npmjs.org/package/acorn5-object-spread)
+- [import()](https://github.com/tc39/proposal-dynamic-import) ([ESTree](https://github.com/estree/estree/blob/master/experimental/import-expression.md)) via [acorn-dynamic-import](https://www.npmjs.com/package/acorn-dynamic-import)
 
 The following stage 3 proposals are not yet implemented:
 
