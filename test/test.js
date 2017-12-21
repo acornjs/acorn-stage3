@@ -12,6 +12,9 @@ const testCode = `
         const data = { ...y, ...otherStuff }
       });
     }
+    try {
+      BigInt.method()
+    } catch {}
   }`
 
 const maybeBigInt = str => typeof BigInt !== "undefined" && BigInt.parseInt ? BigInt.parseInt(str) : null
@@ -19,12 +22,12 @@ const maybeBigInt = str => typeof BigInt !== "undefined" && BigInt.parseInt ? Bi
 const ast = {
   type: "Program",
   start: 0,
-  end: 236,
+  end: 283,
   body: [
     {
       type: "FunctionDeclaration",
       start: 3,
-      end: 236,
+      end: 283,
       id: {
         type: "Identifier",
         start: 19,
@@ -40,7 +43,7 @@ const ast = {
       body: {
         type: "BlockStatement",
         start: 23,
-        end: 236,
+        end: 283,
         body: [
           {
             type: "VariableDeclaration",
@@ -301,6 +304,64 @@ const ast = {
                 }
               ]
             }
+          },
+          {
+            type: "TryStatement",
+            start: 237,
+            end: 279,
+            block: {
+              type: "BlockStatement",
+              start: 241,
+              end: 270,
+              body: [
+                {
+                  type: "ExpressionStatement",
+                  start: 249,
+                  end: 264,
+                  expression: {
+                    type: "CallExpression",
+                    start: 249,
+                    end: 264,
+                    callee: {
+                      type: "MemberExpression",
+                      start: 249,
+                      end: 262,
+                      object: {
+                        type: "Identifier",
+                        start: 249,
+                        end: 255,
+                        name: "BigInt"
+                      },
+                      property: {
+                        type: "Identifier",
+                        start: 256,
+                        end: 262,
+                        name: "method"
+                      },
+                      computed: false
+                    },
+                    arguments: [
+
+                    ]
+                  }
+                }
+              ]
+            },
+            handler: {
+              type: "CatchClause",
+              start: 271,
+              end: 279,
+              param: null,
+              body: {
+                type: "BlockStatement",
+                start: 277,
+                end: 279,
+                body: [
+
+                ]
+              }
+            },
+            finalizer: null
           }
         ]
       }

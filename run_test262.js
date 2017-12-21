@@ -15,8 +15,7 @@ const unsupportedFeatures = [
   // stage 3
   "class-fields", "class-fields-public", "computed-property-names",
   "regexp-unicode-property-escapes",
-  "regexp-lookbehind",
-  "optional-catch-binding"
+  "regexp-lookbehind"
 ]
 
 const implementedFeatures = [
@@ -25,6 +24,7 @@ const implementedFeatures = [
   "numeric-separator-literal",
   "object-rest",
   "object-spread",
+  "optional-catch-binding"
 ]
 
 run(

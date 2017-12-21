@@ -24,6 +24,7 @@
     "acorn-bigint": "^0.2.0",
     "acorn-dynamic-import": "^2.0.2",
     "acorn-numeric-separator": "^0.1.0",
+    "acorn-optional-catch-binding": "^0.1.0",
     "acorn5-object-spread": "^5.0.0"
   },
   "version": "0.2.0",

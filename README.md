@@ -11,12 +11,12 @@ It implements support for current [ECMAScript stage 3 proposals](https://github.
 - [import()](https://github.com/tc39/proposal-dynamic-import) ([ESTree](https://github.com/estree/estree/blob/master/experimental/import-expression.md)) via [acorn-dynamic-import](https://www.npmjs.com/package/acorn-dynamic-import)
 - [BigInt: Arbitrary precision integers in JavaScript](https://github.com/tc39/proposal-bigint) ([ESTree](https://github.com/estree/estree/pull/179)) via [acorn-bigint](https://www.npmjs.org/package/acorn-bigint)
 - [Numeric Separators](https://github.com/tc39/proposal-numeric-separator) via [acorn-numeric-separator](https://www.npmjs.org/package/acorn-numeric-separator)
+- [Optional catch binding](https://github.com/tc39/proposal-optional-catch-binding) ([ESTree](https://github.com/estree/estree/blob/master/experimental/optional-catch-binding.md)) via [acorn-optional-catch-binding](https://www.npmjs.org/package/acorn-optional-catch-binding)
 
 The following stage 3 proposals are not yet implemented:
 
 - [RegExp Lookbehind Assertions](https://github.com/tc39/proposal-regexp-lookbehind)
 - [Unicode property escapes in regular expressions](https://github.com/tc39/proposal-regexp-unicode-property-escapes)
-- [Optional catch binding](https://github.com/tc39/proposal-optional-catch-binding) ([ESTree](https://github.com/estree/estree/blob/master/experimental/optional-catch-binding.md))
 - [import.meta](https://github.com/tc39/proposal-import-meta)
 - [Private methods and getter/setters for JavaScript classes](https://github.com/tc39/proposal-private-methods)
 - [Class field declarations](https://github.com/tc39/proposal-class-fields) (Only public fields, private fields and methods, not the static fields, since they are stage 2)

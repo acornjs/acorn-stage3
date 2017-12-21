@@ -6,6 +6,7 @@ const plugins = [
   [ require("acorn-dynamic-import/lib/inject").default, "dynamicImport" ],
   [ require("acorn-numeric-separator/inject"), "numericSeparator" ],
   [ require("acorn-bigint/inject"), "bigInt" ],
+  [ require("acorn-optional-catch-binding/inject"), "optionalCatchBinding" ],
 ]
 
 module.exports = acorn => {
