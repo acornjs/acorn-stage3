@@ -21,6 +21,8 @@ const unsupportedFeatures = [
 const implementedFeatures = [
   "async-iteration",
   "BigInt",
+  "dynamic-import", // https://github.com/tc39/test262/issues/1164
+  "import-meta", // https://github.com/tc39/test262/issues/1342
   "numeric-separator-literal",
   "object-rest",
   "object-spread",

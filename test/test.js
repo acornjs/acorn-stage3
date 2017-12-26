@@ -4,11 +4,16 @@ const assert = require("assert")
 
 const acorn = require("..")
 
+function test(testCode, ast) {
+  const result = acorn.parse(testCode, { plugins: { stage3: true }, ecmaVersion: 9, sourceType: "module" })
+  assert.deepEqual(result, ast)
+}
+
 const testCode = `
   async function* x() {
     let value = 1_000_000n + 0xdead_beefn
     for await (const { a, ...y } in z) {
-      import(a).then(({ interestingThing, ...otherStuff }) => {
+      import(import.meta.resolve(a).replace(/.css$/, ".js")).then(({ interestingThing, ...otherStuff }) => {
         const data = { ...y, ...otherStuff }
       });
     }
@@ -22,12 +27,12 @@ const maybeBigInt = str => typeof BigInt !== "undefined" && BigInt.parseInt ? Bi
 const ast = {
   type: "Program",
   start: 0,
-  end: 283,
+  end: 328,
   body: [
     {
       type: "FunctionDeclaration",
       start: 3,
-      end: 283,
+      end: 328,
       id: {
         type: "Identifier",
         start: 19,
@@ -37,13 +42,11 @@ const ast = {
       generator: true,
       expression: false,
       async: true,
-      params: [
-
-      ],
+      params: [],
       body: {
         type: "BlockStatement",
         start: 23,
-        end: 283,
+        end: 328,
         body: [
           {
             type: "VariableDeclaration",
@@ -89,7 +92,7 @@ const ast = {
           {
             type: "ForInStatement",
             start: 71,
-            end: 232,
+            end: 277,
             await: true,
             left: {
               type: "VariableDeclaration",
@@ -153,24 +156,24 @@ const ast = {
             body: {
               type: "BlockStatement",
               start: 106,
-              end: 232,
+              end: 277,
               body: [
                 {
                   type: "ExpressionStatement",
                   start: 114,
-                  end: 226,
+                  end: 271,
                   expression: {
                     type: "CallExpression",
                     start: 114,
-                    end: 225,
+                    end: 270,
                     callee: {
                       type: "MemberExpression",
                       start: 114,
-                      end: 128,
+                      end: 173,
                       object: {
                         type: "CallExpression",
                         start: 114,
-                        end: 123,
+                        end: 168,
                         callee: {
                           type: "Import",
                           start: 114,
@@ -178,17 +181,92 @@ const ast = {
                         },
                         arguments: [
                           {
-                            type: "Identifier",
+                            type: "CallExpression",
                             start: 121,
-                            end: 122,
-                            name: "a"
+                            end: 167,
+                            callee: {
+                              type: "MemberExpression",
+                              start: 121,
+                              end: 151,
+                              object: {
+                                type: "CallExpression",
+                                start: 121,
+                                end: 143,
+                                callee: {
+                                  type: "MemberExpression",
+                                  start: 121,
+                                  end: 140,
+                                  object: {
+                                    type: "MetaProperty",
+                                    start: 121,
+                                    end: 132,
+                                    meta: {
+                                      type: "Identifier",
+                                      start: 121,
+                                      end: 127,
+                                      name: "import"
+                                    },
+                                    property: {
+                                      type: "Identifier",
+                                      start: 128,
+                                      end: 132,
+                                      name: "meta"
+                                    }
+                                  },
+                                  property: {
+                                    type: "Identifier",
+                                    start: 133,
+                                    end: 140,
+                                    name: "resolve"
+                                  },
+                                  computed: false
+                                },
+                                arguments: [
+                                  {
+                                    type: "Identifier",
+                                    start: 141,
+                                    end: 142,
+                                    name: "a"
+                                  }
+                                ]
+                              },
+                              property: {
+                                type: "Identifier",
+                                start: 144,
+                                end: 151,
+                                name: "replace"
+                              },
+                              computed: false
+                            },
+                            arguments: [
+                              {
+                                type: "Literal",
+                                start: 152,
+                                end: 159,
+                                value: {
+
+                                },
+                                raw: "/.css$/",
+                                regex: {
+                                  pattern: ".css$",
+                                  flags: ""
+                                }
+                              },
+                              {
+                                type: "Literal",
+                                start: 161,
+                                end: 166,
+                                value: ".js",
+                                raw: "\".js\""
+                              }
+                            ]
                           }
                         ]
                       },
                       property: {
                         type: "Identifier",
-                        start: 124,
-                        end: 128,
+                        start: 169,
+                        end: 173,
                         name: "then"
                       },
                       computed: false
@@ -196,8 +274,8 @@ const ast = {
                     arguments: [
                       {
                         type: "ArrowFunctionExpression",
-                        start: 129,
-                        end: 224,
+                        start: 174,
+                        end: 269,
                         id: null,
                         generator: false,
                         expression: false,
@@ -205,38 +283,38 @@ const ast = {
                         params: [
                           {
                             type: "ObjectPattern",
-                            start: 130,
-                            end: 165,
+                            start: 175,
+                            end: 210,
                             properties: [
                               {
                                 type: "Property",
-                                start: 132,
-                                end: 148,
+                                start: 177,
+                                end: 193,
                                 method: false,
                                 shorthand: true,
                                 computed: false,
                                 key: {
                                   type: "Identifier",
-                                  start: 132,
-                                  end: 148,
+                                  start: 177,
+                                  end: 193,
                                   name: "interestingThing"
                                 },
                                 kind: "init",
                                 value: {
                                   type: "Identifier",
-                                  start: 132,
-                                  end: 148,
+                                  start: 177,
+                                  end: 193,
                                   name: "interestingThing"
                                 }
                               },
                               {
                                 type: "RestElement",
-                                start: 150,
-                                end: 163,
+                                start: 195,
+                                end: 208,
                                 argument: {
                                   type: "Identifier",
-                                  start: 153,
-                                  end: 163,
+                                  start: 198,
+                                  end: 208,
                                   name: "otherStuff"
                                 }
                               }
@@ -245,48 +323,48 @@ const ast = {
                         ],
                         body: {
                           type: "BlockStatement",
-                          start: 170,
-                          end: 224,
+                          start: 215,
+                          end: 269,
                           body: [
                             {
                               type: "VariableDeclaration",
-                              start: 180,
-                              end: 216,
+                              start: 225,
+                              end: 261,
                               declarations: [
                                 {
                                   type: "VariableDeclarator",
-                                  start: 186,
-                                  end: 216,
+                                  start: 231,
+                                  end: 261,
                                   id: {
                                     type: "Identifier",
-                                    start: 186,
-                                    end: 190,
+                                    start: 231,
+                                    end: 235,
                                     name: "data"
                                   },
                                   init: {
                                     type: "ObjectExpression",
-                                    start: 193,
-                                    end: 216,
+                                    start: 238,
+                                    end: 261,
                                     properties: [
                                       {
                                         type: "SpreadElement",
-                                        start: 195,
-                                        end: 199,
+                                        start: 240,
+                                        end: 244,
                                         argument: {
                                           type: "Identifier",
-                                          start: 198,
-                                          end: 199,
+                                          start: 243,
+                                          end: 244,
                                           name: "y"
                                         }
                                       },
                                       {
                                         type: "SpreadElement",
-                                        start: 201,
-                                        end: 214,
+                                        start: 246,
+                                        end: 259,
                                         argument: {
                                           type: "Identifier",
-                                          start: 204,
-                                          end: 214,
+                                          start: 249,
+                                          end: 259,
                                           name: "otherStuff"
                                         }
                                       }
@@ -307,58 +385,54 @@ const ast = {
           },
           {
             type: "TryStatement",
-            start: 237,
-            end: 279,
+            start: 282,
+            end: 324,
             block: {
               type: "BlockStatement",
-              start: 241,
-              end: 270,
+              start: 286,
+              end: 315,
               body: [
                 {
                   type: "ExpressionStatement",
-                  start: 249,
-                  end: 264,
+                  start: 294,
+                  end: 309,
                   expression: {
                     type: "CallExpression",
-                    start: 249,
-                    end: 264,
+                    start: 294,
+                    end: 309,
                     callee: {
                       type: "MemberExpression",
-                      start: 249,
-                      end: 262,
+                      start: 294,
+                      end: 307,
                       object: {
                         type: "Identifier",
-                        start: 249,
-                        end: 255,
+                        start: 294,
+                        end: 300,
                         name: "BigInt"
                       },
                       property: {
                         type: "Identifier",
-                        start: 256,
-                        end: 262,
+                        start: 301,
+                        end: 307,
                         name: "method"
                       },
                       computed: false
                     },
-                    arguments: [
-
-                    ]
+                    arguments: []
                   }
                 }
               ]
             },
             handler: {
               type: "CatchClause",
-              start: 271,
-              end: 279,
+              start: 316,
+              end: 324,
               param: null,
               body: {
                 type: "BlockStatement",
-                start: 277,
-                end: 279,
-                body: [
-
-                ]
+                start: 322,
+                end: 324,
+                body: []
               }
             },
             finalizer: null
@@ -367,9 +441,115 @@ const ast = {
       }
     }
   ],
-  sourceType: "script"
+  sourceType: "module"
 }
+test(testCode, ast)
 
-const result = acorn.parse(testCode, { plugins: { stage3: true }, ecmaVersion: 9 })
-
-assert.deepEqual(result, ast)
+test("import('a').then(() => {import.meta.hooray()})", {
+  type: "Program",
+  start: 0,
+  end: 46,
+  body: [
+    {
+      type: "ExpressionStatement",
+      start: 0,
+      end: 46,
+      expression: {
+        type: "CallExpression",
+        start: 0,
+        end: 46,
+        callee: {
+          type: "MemberExpression",
+          start: 0,
+          end: 16,
+          object: {
+            type: "CallExpression",
+            start: 0,
+            end: 11,
+            callee: {
+              type: "Import",
+              start: 0,
+              end: 6
+            },
+            arguments: [
+              {
+                type: "Literal",
+                start: 7,
+                end: 10,
+                value: "a",
+                raw: "'a'"
+              }
+            ]
+          },
+          property: {
+            type: "Identifier",
+            start: 12,
+            end: 16,
+            name: "then"
+          },
+          computed: false
+        },
+        arguments: [
+          {
+            type: "ArrowFunctionExpression",
+            start: 17,
+            end: 45,
+            id: null,
+            generator: false,
+            expression: false,
+            async: false,
+            params: [],
+            body: {
+              type: "BlockStatement",
+              start: 23,
+              end: 45,
+              body: [
+                {
+                  type: "ExpressionStatement",
+                  start: 24,
+                  end: 44,
+                  expression: {
+                    type: "CallExpression",
+                    start: 24,
+                    end: 44,
+                    callee: {
+                      type: "MemberExpression",
+                      start: 24,
+                      end: 42,
+                      object: {
+                        type: "MetaProperty",
+                        start: 24,
+                        end: 35,
+                        meta: {
+                          type: "Identifier",
+                          start: 24,
+                          end: 30,
+                          name: "import"
+                        },
+                        property: {
+                          type: "Identifier",
+                          start: 31,
+                          end: 35,
+                          name: "meta"
+                        }
+                      },
+                      property: {
+                        type: "Identifier",
+                        start: 36,
+                        end: 42,
+                        name: "hooray"
+                      },
+                      computed: false
+                    },
+                    arguments: []
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  sourceType: "module"
+})

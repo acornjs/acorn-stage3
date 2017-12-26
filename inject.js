@@ -4,6 +4,7 @@ const plugins = [
   [ require("acorn-async-iteration/inject"), "asyncIteration" ],
   [ require("acorn5-object-spread/inject"), "objectSpread" ],
   [ require("acorn-dynamic-import/lib/inject").default, "dynamicImport" ],
+  [ require("acorn-import-meta/inject"), "importMeta" ],
   [ require("acorn-numeric-separator/inject"), "numericSeparator" ],
   [ require("acorn-bigint/inject"), "bigInt" ],
   [ require("acorn-optional-catch-binding/inject"), "optionalCatchBinding" ],
