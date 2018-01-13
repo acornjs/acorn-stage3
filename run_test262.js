@@ -10,7 +10,6 @@ const unsupportedFeatures = [
   "regexp-named-groups",
 
   // stage 3
-  "class-fields-private", "class-fields-public",
   "regexp-unicode-property-escapes",
   "regexp-lookbehind"
 ]
@@ -18,6 +17,8 @@ const unsupportedFeatures = [
 const implementedFeatures = [
   "async-iteration",
   "BigInt",
+  "class-fields-private",
+  "class-fields-public",
   "dynamic-import", // https://github.com/tc39/test262/issues/1164
   "import-meta", // https://github.com/tc39/test262/issues/1342
   "numeric-separator-literal",

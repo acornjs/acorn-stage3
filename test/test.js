@@ -21,9 +21,15 @@ const testCode = `
         const data = { ...y, ...otherStuff }
       });
     }
+
     try {
       BigInt.method()
     } catch {}
+
+    class A {
+      #a = 5_5n;
+      b = this.#a * 5
+    }
   }`
 
 const maybeBigInt = str => typeof BigInt !== "undefined" && BigInt.parseInt ? BigInt.parseInt(str) : null
@@ -31,12 +37,12 @@ const maybeBigInt = str => typeof BigInt !== "undefined" && BigInt.parseInt ? Bi
 const ast = {
   type: "Program",
   start: 0,
-  end: 328,
+  end: 389,
   body: [
     {
       type: "FunctionDeclaration",
       start: 3,
-      end: 328,
+      end: 389,
       id: {
         type: "Identifier",
         start: 19,
@@ -50,7 +56,7 @@ const ast = {
       body: {
         type: "BlockStatement",
         start: 23,
-        end: 328,
+        end: 389,
         body: [
           {
             type: "VariableDeclaration",
@@ -389,35 +395,35 @@ const ast = {
           },
           {
             type: "TryStatement",
-            start: 282,
-            end: 324,
+            start: 283,
+            end: 325,
             block: {
               type: "BlockStatement",
-              start: 286,
-              end: 315,
+              start: 287,
+              end: 316,
               body: [
                 {
                   type: "ExpressionStatement",
-                  start: 294,
-                  end: 309,
+                  start: 295,
+                  end: 310,
                   expression: {
                     type: "CallExpression",
-                    start: 294,
-                    end: 309,
+                    start: 295,
+                    end: 310,
                     callee: {
                       type: "MemberExpression",
-                      start: 294,
-                      end: 307,
+                      start: 295,
+                      end: 308,
                       object: {
                         type: "Identifier",
-                        start: 294,
-                        end: 300,
+                        start: 295,
+                        end: 301,
                         name: "BigInt"
                       },
                       property: {
                         type: "Identifier",
-                        start: 301,
-                        end: 307,
+                        start: 302,
+                        end: 308,
                         name: "method"
                       },
                       computed: false
@@ -429,17 +435,98 @@ const ast = {
             },
             handler: {
               type: "CatchClause",
-              start: 316,
-              end: 324,
+              start: 317,
+              end: 325,
               param: null,
               body: {
                 type: "BlockStatement",
-                start: 322,
-                end: 324,
+                start: 323,
+                end: 325,
                 body: []
               }
             },
             finalizer: null
+          },
+          {
+            type: "ClassDeclaration",
+            start: 331,
+            end: 385,
+            id: {
+              type: "Identifier",
+              start: 337,
+              end: 338,
+              name: "A"
+            },
+            superClass: null,
+            body: {
+              type: "ClassBody",
+              start: 339,
+              end: 385,
+              body: [
+                {
+                  type: "FieldDefinition",
+                  start: 347,
+                  end: 356,
+                  computed: false,
+                  key: {
+                    type: "PrivateName",
+                    start: 348,
+                    end: 349,
+                    name: "a"
+                  },
+                  value: {
+                    type: "Literal",
+                    start: 352,
+                    end: 356,
+                    value: maybeBigInt("55"),
+                    raw: "5_5n",
+                    bigint: "5_5n"
+                  }
+                },
+                {
+                  type: "FieldDefinition",
+                  start: 364,
+                  end: 379,
+                  computed: false,
+                  key: {
+                    type: "Identifier",
+                    start: 364,
+                    end: 365,
+                    name: "b"
+                  },
+                  value: {
+                    type: "BinaryExpression",
+                    start: 368,
+                    end: 379,
+                    left: {
+                      type: "MemberExpression",
+                      start: 368,
+                      end: 375,
+                      object: {
+                        type: "ThisExpression",
+                        start: 368,
+                        end: 372
+                      },
+                      property: {
+                        type: "PrivateName",
+                        start: 374,
+                        end: 375,
+                        name: "a"
+                      },
+                      computed: false
+                    },
+                    operator: "*",
+                    right: {
+                      type: "Literal",
+                      start: 378,
+                      end: 379,
+                      value: 5,
+                      raw: "5"
+                    }
+                  }
+                }
+              ]
+            }
           }
         ]
       }
