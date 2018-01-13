@@ -4,10 +4,14 @@ const assert = require("assert")
 
 const acorn = require("..")
 
+const parse = testCode => acorn.parse(testCode, { plugins: { stage3: true }, ecmaVersion: 9, sourceType: "module" })
+
 function test(testCode, ast) {
-  const result = acorn.parse(testCode, { plugins: { stage3: true }, ecmaVersion: 9, sourceType: "module" })
+  const result = parse(testCode)
   assert.deepEqual(result, ast)
 }
+
+assert.throws(() => parse("0, {...rest, b} = {}"))
 
 const testCode = `
   async function* x() {

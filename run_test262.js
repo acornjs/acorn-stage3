@@ -6,14 +6,11 @@ const run = require("test262-parser-runner")
 const parse = require(".").parse
 
 const unsupportedFeatures = [
-  // Implemented in acorn master
-  "regexp-dotall",
-
   // ECMAScript 2018
   "regexp-named-groups",
 
   // stage 3
-  "class-fields", "class-fields-public", "computed-property-names",
+  "class-fields-private", "class-fields-public",
   "regexp-unicode-property-escapes",
   "regexp-lookbehind"
 ]

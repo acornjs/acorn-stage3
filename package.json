@@ -19,20 +19,20 @@
     "lint": "eslint -c .eslintrc.json ."
   },
   "dependencies": {
-    "acorn": "^5.2.1",
-    "acorn-async-iteration": "^0.1.0",
+    "acorn": "^5.3.0",
+    "acorn-async-iteration": "^0.2.0",
     "acorn-bigint": "^0.2.0",
     "acorn-dynamic-import": "^2.0.2",
     "acorn-import-meta": "^0.2.0",
     "acorn-numeric-separator": "^0.1.0",
     "acorn-optional-catch-binding": "^0.1.0",
-    "acorn5-object-spread": "^5.0.0"
+    "acorn5-object-spread": "^5.1.0"
   },
   "version": "0.3.0",
   "devDependencies": {
     "eslint": "^4.13.1",
     "eslint-plugin-node": "^5.2.1",
-    "test262": "git+https://github.com/tc39/test262.git#8311965251953d4745aeb68c98fb71fab2eac1d0",
+    "test262": "git+https://github.com/tc39/test262.git#66df349af32c3f293936f7a947ac18bfb1ecda5c",
     "test262-parser-runner": "^0.2.0"
   }
 }
