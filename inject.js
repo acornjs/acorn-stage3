@@ -9,6 +9,7 @@ const plugins = [
   [ require("acorn-bigint/inject"), "bigInt" ],
   [ require("acorn-optional-catch-binding/inject"), "optionalCatchBinding" ],
   [ require("acorn-class-fields/inject"), "classFields" ],
+  [ require("acorn-private-methods/inject"), "privateMethods" ],
 ]
 
 module.exports = acorn => {

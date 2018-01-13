@@ -14,12 +14,12 @@ It implements support for current [ECMAScript stage 3 proposals](https://github.
 - [Optional catch binding](https://github.com/tc39/proposal-optional-catch-binding) ([ESTree](https://github.com/estree/estree/blob/master/experimental/optional-catch-binding.md)) via [acorn-optional-catch-binding](https://www.npmjs.org/package/acorn-optional-catch-binding)
 - [import.meta](https://github.com/tc39/proposal-import-meta) via [acorn-import-meta](https://www.npmjs.org/package/acorn-import-meta)
 - [Class field declarations](https://github.com/tc39/proposal-class-fields) via [acorn-class-fields](https://www.npmjs.org/package/acorn-class-fields)
+- [Private methods and getter/setters for JavaScript classes](https://github.com/tc39/proposal-private-methods) via [acorn-private-methods](https://www.npmjs.org/package/acorn-private-methods)
 
 The following stage 3 proposals are not yet implemented:
 
 - [RegExp Lookbehind Assertions](https://github.com/tc39/proposal-regexp-lookbehind)
 - [Unicode property escapes in regular expressions](https://github.com/tc39/proposal-regexp-unicode-property-escapes)
-- [Private methods and getter/setters for JavaScript classes](https://github.com/tc39/proposal-private-methods)
 
 ## Usage
 
