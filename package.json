@@ -1,7 +1,7 @@
 {
   "name": "acorn-stage3",
   "description": "Support for stage 3 proposals in acorn",
-  "homepage": "https://github.com/adrianheine/acorn-stage3",
+  "homepage": "https://github.com/acornjs/acorn-stage3",
   "contributors": [
     "Adrian Heine <mail@adrianheine.de>"
   ],
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/adrianheine/acorn-stage3"
+    "url": "https://github.com/acornjs/acorn-stage3"
   },
   "license": "AGPL-3.0",
   "scripts": {
