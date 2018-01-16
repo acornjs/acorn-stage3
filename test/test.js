@@ -257,12 +257,12 @@ describe("acorn-stage3", () => {
                                   type: "Literal",
                                   start: 152,
                                   end: 159,
-                                  value: /.css$/,
                                   raw: "/.css$/",
                                   regex: {
                                     pattern: ".css$",
                                     flags: ""
-                                  }
+                                  },
+                                  value: undefined
                                 },
                                 {
                                   type: "Literal",

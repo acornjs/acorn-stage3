@@ -5,14 +5,7 @@ const path = require("path")
 const run = require("test262-parser-runner")
 const parse = require(".").parse
 
-const unsupportedFeatures = [
-  // ECMAScript 2018
-  "regexp-named-groups",
-
-  // stage 3
-  "regexp-unicode-property-escapes",
-  "regexp-lookbehind"
-]
+const unsupportedFeatures = []
 
 const implementedFeatures = [
   "BigInt",
@@ -21,7 +14,12 @@ const implementedFeatures = [
   "dynamic-import", // https://github.com/tc39/test262/issues/1164
   "import-meta", // https://github.com/tc39/test262/issues/1342
   "numeric-separator-literal",
-  "optional-catch-binding"
+  "optional-catch-binding",
+  "regexp-dotall",
+  "regexp-lookbehind",
+  "regexp-named-groups",
+  "regexp-pattern-flags",
+  "regexp-unicode-property-escapes"
 ]
 
 run(

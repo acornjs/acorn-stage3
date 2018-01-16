@@ -1,8 +1,6 @@
 "use strict"
 
 const plugins = [
-  [ require("acorn-async-iteration/inject"), "asyncIteration" ],
-  [ require("acorn5-object-spread/inject"), "objectSpread" ],
   [ require("acorn-dynamic-import/lib/inject").default, "dynamicImport" ],
   [ require("acorn-import-meta/inject"), "importMeta" ],
   [ require("acorn-numeric-separator/inject"), "numericSeparator" ],
@@ -10,6 +8,7 @@ const plugins = [
   [ require("acorn-optional-catch-binding/inject"), "optionalCatchBinding" ],
   [ require("acorn-class-fields/inject"), "classFields" ],
   [ require("acorn-private-methods/inject"), "privateMethods" ],
+  [ require("acorn-parse-regexps/inject"), "parseRegexps" ],
 ]
 
 module.exports = acorn => {
