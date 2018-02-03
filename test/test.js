@@ -14,9 +14,9 @@ function test(testCode, ast) {
 }
 
 describe("acorn-stage3", () => {
-  it("Doesn't break check for comma after rest element", () =>
+  it("Doesn't break check for comma after rest element", () => {
     assert.throws(() => parse("0, {...rest, b} = {}"))
-  )
+  })
 
   const testCode = `async function* xxyz() {
     let value = 1_000_000n + 0xdead_beefn
