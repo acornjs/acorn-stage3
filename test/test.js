@@ -20,7 +20,7 @@ describe("acorn-stage3", () => {
 
   const testCode = `async function* xxyz() {
     let value = 1_000_000n + 0xdead_beefn
-    for await (const { a, ...y } in z) {
+    for await (const { a, ...y } of z) {
       import(import.meta.resolve(a).replace(/.css$/, ".js")).then(({ interestingThing, ...otherStuff }) => {
         const data = { ...y, ...otherStuff }
       });
@@ -104,7 +104,7 @@ describe("acorn-stage3", () => {
               kind: "let"
             },
             {
-              type: "ForInStatement",
+              type: "ForOfStatement",
               start: 71,
               end: 277,
               await: true,
