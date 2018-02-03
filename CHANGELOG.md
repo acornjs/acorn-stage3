@@ -1,3 +1,10 @@
+## 0.5.0 (2018-02-03)
+
+* Update to acorn 5.4.1
+* Remove rest and spread properties and async iteration support, since acorn does that now
+* Add stage 4 regular expression proposal support
+* Add JSON superset support
+
 ## 0.4.0 (2018-01-13)
 
 * Update to acorn 5.3.0

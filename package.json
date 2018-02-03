@@ -30,7 +30,7 @@
     "acorn-parse-regexps": "^0.2.0",
     "acorn-private-methods": "^0.1.0"
   },
-  "version": "0.4.0",
+  "version": "0.5.0",
   "devDependencies": {
     "eslint": "^4.13.1",
     "eslint-plugin-node": "^5.2.1",
