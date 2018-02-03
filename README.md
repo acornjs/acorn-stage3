@@ -13,6 +13,7 @@ It implements support for all current [ECMAScript stage 3 proposals](https://git
 - [import.meta](https://github.com/tc39/proposal-import-meta) via [acorn-import-meta](https://www.npmjs.org/package/acorn-import-meta)
 - [Class field declarations](https://github.com/tc39/proposal-class-fields) via [acorn-class-fields](https://www.npmjs.org/package/acorn-class-fields)
 - [Private methods and getter/setters for JavaScript classes](https://github.com/tc39/proposal-private-methods) via [acorn-private-methods](https://www.npmjs.org/package/acorn-private-methods)
+- [Subsume JSON](https://github.com/tc39/proposal-json-superset) via [acorn-json-superset](https://www.npmjs.org/package/acorn-json-superset)
 
 It also implements support for these stage 4 proposals that acorn doesn't support itself:
 

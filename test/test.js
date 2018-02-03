@@ -673,7 +673,7 @@ describe("acorn-stage3", () => {
 
   test(`class A {
     #secret = this.#default
-    #default = "default"
+    #default = "defau\u2028\u2029"
 
     #getSecret() { return this.#secret }
 
@@ -750,8 +750,8 @@ describe("acorn-stage3", () => {
                 type: "Literal",
                 start: 53,
                 end: 62,
-                value: "default",
-                raw: "\"default\""
+                value: "defau\u2028\u2029",
+                raw: "\"defau\u2028\u2029\""
               }
             },
             {
