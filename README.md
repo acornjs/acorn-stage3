@@ -19,7 +19,7 @@ It also implements support for these stage 4 proposals that acorn doesn't suppor
 
 - [RegExp Lookbehind Assertions](https://github.com/tc39/proposal-regexp-lookbehind) via [acorn-parse-regexps](https://www.npmjs.org/package/acorn-parse-regexps)
 - [Unicode property escapes in regular expressions](https://github.com/tc39/proposal-regexp-unicode-property-escapes) via [acorn-parse-regexps](https://www.npmjs.org/package/acorn-parse-regexps)
-- [RegExp Named Capture Groups](https://github.com/tc39/proposal-regexp-named-groups) via [acorn-parse-regexps](https://www.npmjs.org/package/acorn-parse-regexps]
+- [RegExp Named Capture Groups](https://github.com/tc39/proposal-regexp-named-groups) via [acorn-parse-regexps](https://www.npmjs.org/package/acorn-parse-regexps)
 
 ## Usage
 
