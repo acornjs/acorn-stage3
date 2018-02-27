@@ -8,7 +8,6 @@ const plugins = [
   [ require("acorn-optional-catch-binding/inject"), "optionalCatchBinding" ],
   [ require("acorn-class-fields/inject"), "classFields" ],
   [ require("acorn-private-methods/inject"), "privateMethods" ],
-  [ require("acorn-parse-regexps/inject"), "parseRegexps" ],
   [ require("acorn-json-superset/inject"), "jsonSuperset" ],
 ]
 
