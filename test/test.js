@@ -472,7 +472,7 @@ describe("acorn-stage3", () => {
                     computed: false,
                     key: {
                       type: "PrivateName",
-                      start: 348,
+                      start: 347,
                       end: 349,
                       name: "a"
                     },
@@ -494,7 +494,7 @@ describe("acorn-stage3", () => {
                     computed: false,
                     key: {
                       type: "PrivateName",
-                      start: 365,
+                      start: 364,
                       end: 369,
                       name: "getA"
                     },
@@ -531,7 +531,7 @@ describe("acorn-stage3", () => {
                                 },
                                 property: {
                                   type: "PrivateName",
-                                  start: 387,
+                                  start: 386,
                                   end: 388,
                                   name: "a"
                                 },
@@ -713,7 +713,7 @@ describe("acorn-stage3", () => {
               computed: false,
               key: {
                 type: "PrivateName",
-                start: 15,
+                start: 14,
                 end: 21,
                 name: "secret"
               },
@@ -728,7 +728,7 @@ describe("acorn-stage3", () => {
                 },
                 property: {
                   type: "PrivateName",
-                  start: 30,
+                  start: 29,
                   end: 37,
                   name: "default"
                 },
@@ -742,7 +742,7 @@ describe("acorn-stage3", () => {
               computed: false,
               key: {
                 type: "PrivateName",
-                start: 43,
+                start: 42,
                 end: 50,
                 name: "default"
               },
@@ -763,7 +763,7 @@ describe("acorn-stage3", () => {
               computed: false,
               key: {
                 type: "PrivateName",
-                start: 69,
+                start: 68,
                 end: 78,
                 name: "getSecret"
               },
@@ -796,7 +796,7 @@ describe("acorn-stage3", () => {
                         },
                         property: {
                           type: "PrivateName",
-                          start: 96,
+                          start: 95,
                           end: 102,
                           name: "secret"
                         },
@@ -860,7 +860,7 @@ describe("acorn-stage3", () => {
                                 computed: false,
                                 key: {
                                   type: "PrivateName",
-                                  start: 167,
+                                  start: 166,
                                   end: 173,
                                   name: "secret"
                                 },
@@ -920,7 +920,7 @@ describe("acorn-stage3", () => {
                                             },
                                             property: {
                                               type: "PrivateName",
-                                              start: 220,
+                                              start: 219,
                                               end: 226,
                                               name: "secret"
                                             },
@@ -957,7 +957,7 @@ describe("acorn-stage3", () => {
                               },
                               property: {
                                 type: "PrivateName",
-                                start: 261,
+                                start: 260,
                                 end: 270,
                                 name: "getSecret"
                               },
