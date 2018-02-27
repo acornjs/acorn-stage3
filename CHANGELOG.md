@@ -1,3 +1,8 @@
+## 0.6.0 (2018-02-27)
+
+* Update to acorn 5.5.0
+* Remove acorn-parse-regexp (superseded by acorn 5.5.0)
+
 ## 0.5.0 (2018-02-03)
 
 * Update to acorn 5.4.1
