@@ -13,7 +13,6 @@ const implementedFeatures = [
   "class-fields-public",
   "dynamic-import", // https://github.com/tc39/test262/issues/1164
   "import-meta", // https://github.com/tc39/test262/issues/1342
-  "numeric-separator-literal",
   "optional-catch-binding",
 ]
 

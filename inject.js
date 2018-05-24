@@ -3,7 +3,6 @@
 const plugins = [
   [ require("acorn-dynamic-import/lib/inject").default, "dynamicImport" ],
   [ require("acorn-import-meta/inject"), "importMeta" ],
-  [ require("acorn-numeric-separator/inject"), "numericSeparator" ],
   [ require("acorn-bigint/inject"), "bigInt" ],
   [ require("acorn-optional-catch-binding/inject"), "optionalCatchBinding" ],
   [ require("acorn-class-fields/inject"), "classFields" ],

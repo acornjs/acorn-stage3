@@ -19,7 +19,7 @@ describe("acorn-stage3", () => {
   })
 
   const testCode = `async function* xxyz() {
-    let value = 1_000_000n + 0xdead_beefn
+    let value =   1000000n +  0xdeadbeefn
     for await (const { a, ...y } of z) {
       import(import.meta.resolve(a).replace(/.css$/, ".js")).then(({ interestingThing, ...otherStuff }) => {
         const data = { ...y, ...otherStuff }
@@ -31,7 +31,7 @@ describe("acorn-stage3", () => {
     } catch {}
 
     class A {
-      #a = 5_5n;
+      #a =  55n;
       #getA() { return this.#a * 5 }
     }
   }`
@@ -79,24 +79,24 @@ describe("acorn-stage3", () => {
                   },
                   init: {
                     type: "BinaryExpression",
-                    start: 41,
+                    start: 43,
                     end: 66,
                     left: {
                       type: "Literal",
-                      start: 41,
+                      start: 43,
                       end: 51,
                       value: maybeBigInt("1000000"),
-                      raw: "1_000_000n",
-                      bigint: "1_000_000n"
+                      raw: "1000000n",
+                      bigint: "1000000n"
                     },
                     operator: "+",
                     right: {
                       type: "Literal",
-                      start: 54,
+                      start: 55,
                       end: 66,
                       value: maybeBigInt("3735928559"),
-                      raw: "0xdead_beefn",
-                      bigint: "0xdead_beefn"
+                      raw: "0xdeadbeefn",
+                      bigint: "0xdeadbeefn"
                     }
                   }
                 }
@@ -478,11 +478,11 @@ describe("acorn-stage3", () => {
                     },
                     value: {
                       type: "Literal",
-                      start: 352,
+                      start: 353,
                       end: 356,
                       value: maybeBigInt("55"),
-                      raw: "5_5n",
-                      bigint: "5_5n"
+                      raw: "55n",
+                      bigint: "55n"
                     }
                   },
                   {
