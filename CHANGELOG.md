@@ -1,3 +1,9 @@
+## 0.7.0 (2018-10-01)
+
+* Update to new acorn 6 interface
+* Change license to MIT
+* Add static class features support
+
 ## 0.6.0 (2018-02-27)
 
 * Update to acorn 5.5.0
