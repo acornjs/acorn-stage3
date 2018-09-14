@@ -8,9 +8,6 @@ const stage3 = require(".")
 const Parser = acorn.Parser.extend(stage3)
 
 const unsupportedFeatures = [
-  "class-static-fields-private",
-  "class-static-fields-public",
-  "class-static-methods-private",
   "export-star-as-namespace-from-module",
   "numeric-separator-literal"
 ]

@@ -11,6 +11,7 @@ It implements support for all current [ECMAScript stage 3 proposals](https://git
 - [import.meta](https://github.com/tc39/proposal-import-meta) via [acorn-import-meta](https://www.npmjs.org/package/acorn-import-meta)
 - [Class field declarations](https://github.com/tc39/proposal-class-fields) via [acorn-class-fields](https://www.npmjs.org/package/acorn-class-fields)
 - [Private methods and getter/setters for JavaScript classes](https://github.com/tc39/proposal-private-methods) via [acorn-private-methods](https://www.npmjs.org/package/acorn-private-methods)
+- [Static class features](https://github.com/tc39/proposal-static-class-features) via [acorn-static-class-features](https://www.npmjs.org/package/acorn-static-class-features)
 
 ## Usage
 
