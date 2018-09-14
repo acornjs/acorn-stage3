@@ -12,7 +12,7 @@
     "type": "git",
     "url": "https://github.com/acornjs/acorn-stage3"
   },
-  "license": "AGPL-3.0",
+  "license": "MIT",
   "scripts": {
     "test": "mocha",
     "test:test262": "node run_test262.js",
