@@ -8,32 +8,18 @@ It implements support for all current [ECMAScript stage 3 proposals](https://git
 
 - [import()](https://github.com/tc39/proposal-dynamic-import) ([ESTree](https://github.com/estree/estree/blob/master/experimental/import-expression.md)) via [acorn-dynamic-import](https://www.npmjs.com/package/acorn-dynamic-import)
 - [BigInt: Arbitrary precision integers in JavaScript](https://github.com/tc39/proposal-bigint) ([ESTree](https://github.com/estree/estree/pull/179)) via [acorn-bigint](https://www.npmjs.org/package/acorn-bigint)
-- [Optional catch binding](https://github.com/tc39/proposal-optional-catch-binding) ([ESTree](https://github.com/estree/estree/blob/master/experimental/optional-catch-binding.md)) via [acorn-optional-catch-binding](https://www.npmjs.org/package/acorn-optional-catch-binding)
 - [import.meta](https://github.com/tc39/proposal-import-meta) via [acorn-import-meta](https://www.npmjs.org/package/acorn-import-meta)
 - [Class field declarations](https://github.com/tc39/proposal-class-fields) via [acorn-class-fields](https://www.npmjs.org/package/acorn-class-fields)
 - [Private methods and getter/setters for JavaScript classes](https://github.com/tc39/proposal-private-methods) via [acorn-private-methods](https://www.npmjs.org/package/acorn-private-methods)
-- [Subsume JSON](https://github.com/tc39/proposal-json-superset) via [acorn-json-superset](https://www.npmjs.org/package/acorn-json-superset)
 
 ## Usage
 
-You can use this module directly in order to get an Acorn instance with the plugin installed:
+This module provides a plugin that can be used to extend the Acorn `Parser` class:
 
 ```javascript
-var acorn = require('acorn-stage3');
-```
-
-Or you can use `inject.js` for injecting the plugin into your own version of Acorn like this:
-
-```javascript
-var acorn = require('acorn-stage3/inject')(require('./custom-acorn'));
-```
-
-Then, use the `plugins` option to enable the plugiin:
-
-```javascript
-var ast = acorn.parse(code, {
-  plugins: { stage3: true }
-});
+const {Parser} = require('acorn');
+const stage3 = require('acorn-stage3');
+Parser.extend(bigInt).parse('100n');
 ```
 
 ## License

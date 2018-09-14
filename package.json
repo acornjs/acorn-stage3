@@ -18,18 +18,19 @@
     "test:test262": "node run_test262.js",
     "lint": "eslint -c .eslintrc.json ."
   },
+  "peerDependencies": {
+    "acorn": "^6.0.1"
+  },
   "dependencies": {
-    "acorn": "^5.5.0",
-    "acorn-bigint": "^0.2.0",
-    "acorn-class-fields": "^0.1.1",
-    "acorn-dynamic-import": "^3.0.0",
-    "acorn-import-meta": "^0.2.1",
-    "acorn-json-superset": "^0.1.0",
-    "acorn-optional-catch-binding": "^0.1.0",
-    "acorn-private-methods": "^0.1.1"
+    "acorn-bigint": "^0.3.0",
+    "acorn-class-fields": "^0.2.0",
+    "acorn-dynamic-import": "^4.0.0",
+    "acorn-import-meta": "^0.3.0",
+    "acorn-private-methods": "^0.2.0"
   },
   "version": "0.6.0",
   "devDependencies": {
+    "acorn": "^6.0.1",
     "eslint": "^4.18.1",
     "eslint-plugin-node": "^6.0.1",
     "mocha": "^5.0.1",

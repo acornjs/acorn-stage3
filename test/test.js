@@ -2,9 +2,12 @@
 
 const assert = require("assert")
 
-const acorn = require("..")
+const acorn = require("acorn")
+const stage3 = require("..")
 
-const parse = testCode => acorn.parse(testCode, { plugins: { stage3: true }, ecmaVersion: 9, sourceType: "module" })
+const Parser = acorn.Parser.extend(stage3)
+
+const parse = testCode => Parser.parse(testCode, { ecmaVersion: 10, sourceType: "module" })
 
 function test(testCode, ast) {
   it(testCode, () => {
