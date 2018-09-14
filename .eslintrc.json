@@ -123,7 +123,7 @@
             "error",
             "separate-lines"
         ],
-        "new-cap": "error",
+        "new-cap": ["error", {"capIsNewExceptions": ["BigInt"]}],
         "new-parens": "error",
         "newline-after-var": "off",
         "newline-before-return": "off",

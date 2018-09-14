@@ -12,9 +12,18 @@ const parse = testCode => Parser.parse(testCode, { ecmaVersion: 10, sourceType: 
 function test(testCode, ast) {
   it(testCode, () => {
     const result = parse(testCode)
-    assert.deepEqual(result, ast)
+    assert.deepStrictEqual(result, ast)
   })
 }
+
+const newNode = (start, props) => Object.assign(new acorn.Node({options: {}}, start), props)
+const newBigIntLiteral = (start, stringValue) => newNode(start, {
+  type: "Literal",
+  end: start + stringValue.length + 1,
+  value: typeof BigInt !== "undefined" ? BigInt(stringValue) : null,
+  raw: `${stringValue}n`,
+  bigint: `${stringValue}n`
+})
 
 describe("acorn-stage3", () => {
   it("Doesn't break check for comma after rest element", () => {
@@ -39,226 +48,175 @@ describe("acorn-stage3", () => {
     }
   }`
 
-  const maybeBigInt = str => typeof BigInt !== "undefined" && BigInt.parseInt ? BigInt.parseInt(str) : null
-
-  const ast = {
+  const ast = newNode(0, {
     type: "Program",
-    start: 0,
     end: 404,
     body: [
-      {
+      newNode(0, {
         type: "FunctionDeclaration",
-        start: 0,
         end: 404,
-        id: {
+        id: newNode(16, {
           type: "Identifier",
-          start: 16,
           end: 20,
           name: "xxyz"
-        },
+        }),
         generator: true,
         expression: false,
         async: true,
         params: [],
-        body: {
+        body: newNode(23, {
           type: "BlockStatement",
-          start: 23,
           end: 404,
           body: [
-            {
+            newNode(29, {
               type: "VariableDeclaration",
-              start: 29,
               end: 66,
               declarations: [
-                {
+                newNode(33, {
                   type: "VariableDeclarator",
-                  start: 33,
                   end: 66,
-                  id: {
+                  id: newNode(33, {
                     type: "Identifier",
-                    start: 33,
                     end: 38,
                     name: "value"
-                  },
-                  init: {
+                  }),
+                  init: newNode(43, {
                     type: "BinaryExpression",
-                    start: 43,
                     end: 66,
-                    left: {
-                      type: "Literal",
-                      start: 43,
-                      end: 51,
-                      value: maybeBigInt("1000000"),
-                      raw: "1000000n",
-                      bigint: "1000000n"
-                    },
+                    left: newBigIntLiteral(43, "1000000"),
                     operator: "+",
-                    right: {
-                      type: "Literal",
-                      start: 55,
-                      end: 66,
-                      value: maybeBigInt("3735928559"),
-                      raw: "0xdeadbeefn",
-                      bigint: "0xdeadbeefn"
-                    }
-                  }
-                }
+                    right: newBigIntLiteral(55, "0xdeadbeef"),
+                  })
+                })
               ],
               kind: "let"
-            },
-            {
+            }),
+            newNode(71, {
               type: "ForOfStatement",
-              start: 71,
               end: 277,
               await: true,
-              left: {
+              left: newNode(82, {
                 type: "VariableDeclaration",
-                start: 82,
                 end: 99,
                 declarations: [
-                  {
+                  newNode(88, {
                     type: "VariableDeclarator",
-                    start: 88,
                     end: 99,
-                    id: {
+                    id: newNode(88, {
                       type: "ObjectPattern",
-                      start: 88,
                       end: 99,
                       properties: [
-                        {
+                        newNode(90, {
                           type: "Property",
-                          start: 90,
                           end: 91,
                           method: false,
                           shorthand: true,
                           computed: false,
-                          key: {
+                          key: newNode(90, {
                             type: "Identifier",
-                            start: 90,
                             end: 91,
                             name: "a"
-                          },
+                          }),
                           kind: "init",
-                          value: {
+                          value: newNode(90, {
                             type: "Identifier",
-                            start: 90,
                             end: 91,
                             name: "a"
-                          }
-                        },
-                        {
+                          })
+                        }),
+                        newNode(93, {
                           type: "RestElement",
-                          start: 93,
                           end: 97,
-                          argument: {
+                          argument: newNode(96, {
                             type: "Identifier",
-                            start: 96,
                             end: 97,
                             name: "y"
-                          }
-                        }
+                          })
+                        })
                       ]
-                    },
+                    }),
                     init: null
-                  }
+                  })
                 ],
                 kind: "const"
-              },
-              right: {
+              }),
+              right: newNode(103, {
                 type: "Identifier",
-                start: 103,
                 end: 104,
                 name: "z"
-              },
-              body: {
+              }),
+              body: newNode(106, {
                 type: "BlockStatement",
-                start: 106,
                 end: 277,
                 body: [
-                  {
+                  newNode(114, {
                     type: "ExpressionStatement",
-                    start: 114,
                     end: 271,
-                    expression: {
+                    expression: newNode(114, {
                       type: "CallExpression",
-                      start: 114,
                       end: 270,
-                      callee: {
+                      callee: newNode(114, {
                         type: "MemberExpression",
-                        start: 114,
                         end: 173,
-                        object: {
+                        object: newNode(114, {
                           type: "CallExpression",
-                          start: 114,
                           end: 168,
-                          callee: {
+                          callee: newNode(114, {
                             type: "Import",
-                            start: 114,
                             end: 120
-                          },
+                          }),
                           arguments: [
-                            {
+                            newNode(121, {
                               type: "CallExpression",
-                              start: 121,
                               end: 167,
-                              callee: {
+                              callee: newNode(121, {
                                 type: "MemberExpression",
-                                start: 121,
                                 end: 151,
-                                object: {
+                                object: newNode(121, {
                                   type: "CallExpression",
-                                  start: 121,
                                   end: 143,
-                                  callee: {
+                                  callee: newNode(121, {
                                     type: "MemberExpression",
-                                    start: 121,
                                     end: 140,
-                                    object: {
+                                    object: newNode(121, {
                                       type: "MetaProperty",
-                                      start: 121,
                                       end: 132,
-                                      meta: {
+                                      meta: newNode(121, {
                                         type: "Identifier",
-                                        start: 121,
                                         end: 127,
                                         name: "import"
-                                      },
-                                      property: {
+                                      }),
+                                      property: newNode(128, {
                                         type: "Identifier",
-                                        start: 128,
                                         end: 132,
                                         name: "meta"
-                                      }
-                                    },
-                                    property: {
+                                      })
+                                    }),
+                                    property: newNode(133, {
                                       type: "Identifier",
-                                      start: 133,
                                       end: 140,
                                       name: "resolve"
-                                    },
+                                    }),
                                     computed: false
-                                  },
+                                  }),
                                   arguments: [
-                                    {
+                                    newNode(141, {
                                       type: "Identifier",
-                                      start: 141,
                                       end: 142,
                                       name: "a"
-                                    }
+                                    })
                                   ]
-                                },
-                                property: {
+                                }),
+                                property: newNode(144, {
                                   type: "Identifier",
-                                  start: 144,
                                   end: 151,
                                   name: "replace"
-                                },
+                                }),
                                 computed: false
-                              },
+                              }),
                               arguments: [
-                                {
+                                newNode(152, {
                                   type: "Literal",
-                                  start: 152,
                                   end: 159,
                                   raw: "/.css$/",
                                   regex: {
@@ -266,413 +224,347 @@ describe("acorn-stage3", () => {
                                     flags: ""
                                   },
                                   value: /.css$/
-                                },
-                                {
+                                }),
+                                newNode(161, {
                                   type: "Literal",
-                                  start: 161,
                                   end: 166,
                                   value: ".js",
                                   raw: "\".js\""
-                                }
+                                })
                               ]
-                            }
+                            })
                           ]
-                        },
-                        property: {
+                        }),
+                        property: newNode(169, {
                           type: "Identifier",
-                          start: 169,
                           end: 173,
                           name: "then"
-                        },
+                        }),
                         computed: false
-                      },
+                      }),
                       arguments: [
-                        {
+                        newNode(174, {
                           type: "ArrowFunctionExpression",
-                          start: 174,
                           end: 269,
                           id: null,
                           generator: false,
                           expression: false,
                           async: false,
                           params: [
-                            {
+                            newNode(175, {
                               type: "ObjectPattern",
-                              start: 175,
                               end: 210,
                               properties: [
-                                {
+                                newNode(177, {
                                   type: "Property",
-                                  start: 177,
                                   end: 193,
                                   method: false,
                                   shorthand: true,
                                   computed: false,
-                                  key: {
+                                  key: newNode(177, {
                                     type: "Identifier",
-                                    start: 177,
                                     end: 193,
                                     name: "interestingThing"
-                                  },
+                                  }),
                                   kind: "init",
-                                  value: {
+                                  value: newNode(177, {
                                     type: "Identifier",
-                                    start: 177,
                                     end: 193,
                                     name: "interestingThing"
-                                  }
-                                },
-                                {
+                                  })
+                                }),
+                                newNode(195, {
                                   type: "RestElement",
-                                  start: 195,
                                   end: 208,
-                                  argument: {
+                                  argument: newNode(198, {
                                     type: "Identifier",
-                                    start: 198,
                                     end: 208,
                                     name: "otherStuff"
-                                  }
-                                }
+                                  })
+                                })
                               ]
-                            }
+                            })
                           ],
-                          body: {
+                          body: newNode(215, {
                             type: "BlockStatement",
-                            start: 215,
                             end: 269,
                             body: [
-                              {
+                              newNode(225, {
                                 type: "VariableDeclaration",
-                                start: 225,
                                 end: 261,
                                 declarations: [
-                                  {
+                                  newNode(231, {
                                     type: "VariableDeclarator",
-                                    start: 231,
                                     end: 261,
-                                    id: {
+                                    id: newNode(231, {
                                       type: "Identifier",
-                                      start: 231,
                                       end: 235,
                                       name: "data"
-                                    },
-                                    init: {
+                                    }),
+                                    init: newNode(238, {
                                       type: "ObjectExpression",
-                                      start: 238,
                                       end: 261,
                                       properties: [
-                                        {
+                                        newNode(240, {
                                           type: "SpreadElement",
-                                          start: 240,
                                           end: 244,
-                                          argument: {
+                                          argument: newNode(243, {
                                             type: "Identifier",
-                                            start: 243,
                                             end: 244,
                                             name: "y"
-                                          }
-                                        },
-                                        {
+                                          })
+                                        }),
+                                        newNode(246, {
                                           type: "SpreadElement",
-                                          start: 246,
                                           end: 259,
-                                          argument: {
+                                          argument: newNode(249, {
                                             type: "Identifier",
-                                            start: 249,
                                             end: 259,
                                             name: "otherStuff"
-                                          }
-                                        }
+                                          })
+                                        })
                                       ]
-                                    }
-                                  }
+                                    })
+                                  })
                                 ],
                                 kind: "const"
-                              }
+                              })
                             ]
-                          }
-                        }
+                          })
+                        })
                       ]
-                    }
-                  }
+                    })
+                  })
                 ]
-              }
-            },
-            {
+              })
+            }),
+            newNode(283, {
               type: "TryStatement",
-              start: 283,
               end: 325,
-              block: {
+              block: newNode(287, {
                 type: "BlockStatement",
-                start: 287,
                 end: 316,
                 body: [
-                  {
+                  newNode(295, {
                     type: "ExpressionStatement",
-                    start: 295,
                     end: 310,
-                    expression: {
+                    expression: newNode(295, {
                       type: "CallExpression",
-                      start: 295,
                       end: 310,
-                      callee: {
+                      callee: newNode(295, {
                         type: "MemberExpression",
-                        start: 295,
                         end: 308,
-                        object: {
+                        object: newNode(295, {
                           type: "Identifier",
-                          start: 295,
                           end: 301,
                           name: "BigInt"
-                        },
-                        property: {
+                        }),
+                        property: newNode(302, {
                           type: "Identifier",
-                          start: 302,
                           end: 308,
                           name: "method"
-                        },
+                        }),
                         computed: false
-                      },
+                      }),
                       arguments: []
-                    }
-                  }
+                    })
+                  })
                 ]
-              },
-              handler: {
+              }),
+              handler: newNode(317, {
                 type: "CatchClause",
-                start: 317,
                 end: 325,
                 param: null,
-                body: {
+                body: newNode(323, {
                   type: "BlockStatement",
-                  start: 323,
                   end: 325,
                   body: []
-                }
-              },
+                })
+              }),
               finalizer: null
-            },
-            {
+            }),
+            newNode(331, {
               type: "ClassDeclaration",
-              start: 331,
               end: 400,
-              id: {
+              id: newNode(337, {
                 type: "Identifier",
-                start: 337,
                 end: 338,
                 name: "A"
-              },
+              }),
               superClass: null,
-              body: {
+              body: newNode(339, {
                 type: "ClassBody",
-                start: 339,
                 end: 400,
                 body: [
-                  {
+                  newNode(347, {
                     type: "FieldDefinition",
-                    start: 347,
                     end: 356,
                     computed: false,
-                    key: {
+                    key: newNode(347, {
                       type: "PrivateName",
-                      start: 347,
                       end: 349,
                       name: "a"
-                    },
-                    value: {
-                      type: "Literal",
-                      start: 353,
-                      end: 356,
-                      value: maybeBigInt("55"),
-                      raw: "55n",
-                      bigint: "55n"
-                    }
-                  },
-                  {
+                    }),
+                    value: newBigIntLiteral(353, "55")
+                  }),
+                  newNode(364, {
                     type: "MethodDefinition",
-                    start: 364,
                     end: 394,
                     kind: "method",
                     static: false,
                     computed: false,
-                    key: {
+                    key: newNode(364, {
                       type: "PrivateName",
-                      start: 364,
                       end: 369,
                       name: "getA"
-                    },
-                    value: {
+                    }),
+                    value: newNode(369, {
                       type: "FunctionExpression",
-                      start: 369,
                       end: 394,
                       id: null,
                       generator: false,
                       expression: false,
                       async: false,
                       params: [],
-                      body: {
+                      body: newNode(372, {
                         type: "BlockStatement",
-                        start: 372,
                         end: 394,
                         body: [
-                          {
+                          newNode(374, {
                             type: "ReturnStatement",
-                            start: 374,
                             end: 392,
-                            argument: {
+                            argument: newNode(381, {
                               type: "BinaryExpression",
-                              start: 381,
                               end: 392,
-                              left: {
+                              left: newNode(381, {
                                 type: "MemberExpression",
-                                start: 381,
                                 end: 388,
-                                object: {
+                                object: newNode(381, {
                                   type: "ThisExpression",
-                                  start: 381,
                                   end: 385
-                                },
-                                property: {
+                                }),
+                                property: newNode(386, {
                                   type: "PrivateName",
-                                  start: 386,
                                   end: 388,
                                   name: "a"
-                                },
+                                }),
                                 computed: false
-                              },
+                              }),
                               operator: "*",
-                              right: {
+                              right: newNode(391, {
                                 type: "Literal",
-                                start: 391,
                                 end: 392,
                                 value: 5,
                                 raw: "5"
-                              }
-                            }
-                          }
+                              })
+                            })
+                          })
                         ]
-                      }
-                    }
-                  }
+                      })
+                    })
+                  })
                 ]
-              }
-            }
+              })
+            })
           ]
-        }
-      }
+        })
+      })
     ],
     sourceType: "module"
-  }
+  })
   test(testCode, ast)
 
-  test("import('a').then(() => {import.meta.hooray()})", {
+  test("import('a').then(() => {import.meta.hooray()})", newNode(0, {
     type: "Program",
-    start: 0,
     end: 46,
     body: [
-      {
+      newNode(0, {
         type: "ExpressionStatement",
-        start: 0,
         end: 46,
-        expression: {
+        expression: newNode(0, {
           type: "CallExpression",
-          start: 0,
           end: 46,
-          callee: {
+          callee: newNode(0, {
             type: "MemberExpression",
-            start: 0,
             end: 16,
-            object: {
+            object: newNode(0, {
               type: "CallExpression",
-              start: 0,
               end: 11,
-              callee: {
+              callee: newNode(0, {
                 type: "Import",
-                start: 0,
                 end: 6
-              },
+              }),
               arguments: [
-                {
+                newNode(7, {
                   type: "Literal",
-                  start: 7,
                   end: 10,
                   value: "a",
                   raw: "'a'"
-                }
+                })
               ]
-            },
-            property: {
+            }),
+            property: newNode(12, {
               type: "Identifier",
-              start: 12,
               end: 16,
               name: "then"
-            },
+            }),
             computed: false
-          },
+          }),
           arguments: [
-            {
+            newNode(17, {
               type: "ArrowFunctionExpression",
-              start: 17,
               end: 45,
               id: null,
               generator: false,
               expression: false,
               async: false,
               params: [],
-              body: {
+              body: newNode(23, {
                 type: "BlockStatement",
-                start: 23,
                 end: 45,
                 body: [
-                  {
+                  newNode(24, {
                     type: "ExpressionStatement",
-                    start: 24,
                     end: 44,
-                    expression: {
+                    expression: newNode(24, {
                       type: "CallExpression",
-                      start: 24,
                       end: 44,
-                      callee: {
+                      callee: newNode(24, {
                         type: "MemberExpression",
-                        start: 24,
                         end: 42,
-                        object: {
+                        object: newNode(24, {
                           type: "MetaProperty",
-                          start: 24,
                           end: 35,
-                          meta: {
+                          meta: newNode(24, {
                             type: "Identifier",
-                            start: 24,
                             end: 30,
                             name: "import"
-                          },
-                          property: {
+                          }),
+                          property: newNode(31, {
                             type: "Identifier",
-                            start: 31,
                             end: 35,
                             name: "meta"
-                          }
-                        },
-                        property: {
+                          })
+                        }),
+                        property: newNode(36, {
                           type: "Identifier",
-                          start: 36,
                           end: 42,
                           name: "hooray"
-                        },
+                        }),
                         computed: false
-                      },
+                      }),
                       arguments: []
-                    }
-                  }
+                    })
+                  })
                 ]
-              }
-            }
+              })
+            })
           ]
-        }
-      }
+        })
+      })
     ],
     sourceType: "module"
-  })
+  }))
 
   test(`class A {
     #secret = this.#default
@@ -688,297 +580,252 @@ describe("acorn-stage3", () => {
         }
       })(this.#getSecret())
     }
-  }`, {
+  }`, newNode(0, {
     type: "Program",
-    start: 0,
     end: 283,
     body: [
-      {
+      newNode(0, {
         type: "ClassDeclaration",
-        start: 0,
         end: 283,
-        id: {
+        id: newNode(6, {
           type: "Identifier",
-          start: 6,
           end: 7,
           name: "A"
-        },
+        }),
         superClass: null,
-        body: {
+        body: newNode(8, {
           type: "ClassBody",
-          start: 8,
           end: 283,
           body: [
-            {
+            newNode(14, {
               type: "FieldDefinition",
-              start: 14,
               end: 37,
               computed: false,
-              key: {
+              key: newNode(14, {
                 type: "PrivateName",
-                start: 14,
                 end: 21,
                 name: "secret"
-              },
-              value: {
+              }),
+              value: newNode(24, {
                 type: "MemberExpression",
-                start: 24,
                 end: 37,
-                object: {
+                object: newNode(24, {
                   type: "ThisExpression",
-                  start: 24,
                   end: 28
-                },
-                property: {
+                }),
+                property: newNode(29, {
                   type: "PrivateName",
-                  start: 29,
                   end: 37,
                   name: "default"
-                },
+                }),
                 computed: false
-              }
-            },
-            {
+              })
+            }),
+            newNode(42, {
               type: "FieldDefinition",
-              start: 42,
               end: 62,
               computed: false,
-              key: {
+              key: newNode(42, {
                 type: "PrivateName",
-                start: 42,
                 end: 50,
                 name: "default"
-              },
-              value: {
+              }),
+              value: newNode(53, {
                 type: "Literal",
-                start: 53,
                 end: 62,
                 value: "defau\u2028\u2029",
                 raw: "\"defau\u2028\u2029\""
-              }
-            },
-            {
+              })
+            }),
+            newNode(68, {
               type: "MethodDefinition",
-              start: 68,
               end: 104,
               kind: "method",
               static: false,
               computed: false,
-              key: {
+              key: newNode(68, {
                 type: "PrivateName",
-                start: 68,
                 end: 78,
                 name: "getSecret"
-              },
-              value: {
+              }),
+              value: newNode(78, {
                 type: "FunctionExpression",
-                start: 78,
                 end: 104,
                 id: null,
                 generator: false,
                 expression: false,
                 async: false,
                 params: [],
-                body: {
+                body: newNode(81, {
                   type: "BlockStatement",
-                  start: 81,
                   end: 104,
                   body: [
-                    {
+                    newNode(83, {
                       type: "ReturnStatement",
-                      start: 83,
                       end: 102,
-                      argument: {
+                      argument: newNode(90, {
                         type: "MemberExpression",
-                        start: 90,
                         end: 102,
-                        object: {
+                        object: newNode(90, {
                           type: "ThisExpression",
-                          start: 90,
                           end: 94
-                        },
-                        property: {
+                        }),
+                        property: newNode(95, {
                           type: "PrivateName",
-                          start: 95,
                           end: 102,
                           name: "secret"
-                        },
+                        }),
                         computed: false
-                      }
-                    }
+                      })
+                    })
                   ]
-                }
-              }
-            },
-            {
+                })
+              })
+            }),
+            newNode(110, {
               type: "MethodDefinition",
-              start: 110,
               end: 279,
               kind: "method",
               static: false,
               computed: false,
-              key: {
+              key: newNode(110, {
                 type: "Identifier",
-                start: 110,
                 end: 127,
                 name: "getSecretProvider"
-              },
-              value: {
+              }),
+              value: newNode(127, {
                 type: "FunctionExpression",
-                start: 127,
                 end: 279,
                 id: null,
                 generator: false,
                 expression: false,
                 async: false,
                 params: [],
-                body: {
+                body: newNode(130, {
                   type: "BlockStatement",
-                  start: 130,
                   end: 279,
                   body: [
-                    {
+                    newNode(138, {
                       type: "ReturnStatement",
-                      start: 138,
                       end: 273,
-                      argument: {
+                      argument: newNode(145, {
                         type: "NewExpression",
-                        start: 145,
                         end: 273,
-                        callee: {
+                        callee: newNode(150, {
                           type: "ClassExpression",
-                          start: 150,
                           end: 253,
                           id: null,
                           superClass: null,
-                          body: {
+                          body: newNode(156, {
                             type: "ClassBody",
-                            start: 156,
                             end: 253,
                             body: [
-                              {
+                              newNode(166, {
                                 type: "FieldDefinition",
-                                start: 166,
                                 end: 173,
                                 computed: false,
-                                key: {
+                                key: newNode(166, {
                                   type: "PrivateName",
-                                  start: 166,
                                   end: 173,
                                   name: "secret"
-                                },
+                                }),
                                 value: null
-                              },
-                              {
+                              }),
+                              newNode(182, {
                                 type: "MethodDefinition",
-                                start: 182,
                                 end: 245,
                                 kind: "constructor",
                                 static: false,
                                 computed: false,
-                                key: {
+                                key: newNode(182, {
                                   type: "Identifier",
-                                  start: 182,
                                   end: 193,
                                   name: "constructor"
-                                },
-                                value: {
+                                }),
+                                value: newNode(193, {
                                   type: "FunctionExpression",
-                                  start: 193,
                                   end: 245,
                                   id: null,
                                   generator: false,
                                   expression: false,
                                   async: false,
                                   params: [
-                                    {
+                                    newNode(194, {
                                       type: "Identifier",
-                                      start: 194,
                                       end: 200,
                                       name: "secret"
-                                    }
+                                    })
                                   ],
-                                  body: {
+                                  body: newNode(202, {
                                     type: "BlockStatement",
-                                    start: 202,
                                     end: 245,
                                     body: [
-                                      {
+                                      newNode(214, {
                                         type: "ExpressionStatement",
-                                        start: 214,
                                         end: 235,
-                                        expression: {
+                                        expression: newNode(214, {
                                           type: "AssignmentExpression",
-                                          start: 214,
                                           end: 235,
                                           operator: "=",
-                                          left: {
+                                          left: newNode(214, {
                                             type: "MemberExpression",
-                                            start: 214,
                                             end: 226,
-                                            object: {
+                                            object: newNode(214, {
                                               type: "ThisExpression",
-                                              start: 214,
                                               end: 218
-                                            },
-                                            property: {
+                                            }),
+                                            property: newNode(219, {
                                               type: "PrivateName",
-                                              start: 219,
                                               end: 226,
                                               name: "secret"
-                                            },
+                                            }),
                                             computed: false
-                                          },
-                                          right: {
+                                          }),
+                                          right: newNode(229, {
                                             type: "Identifier",
-                                            start: 229,
                                             end: 235,
                                             name: "secret"
-                                          }
-                                        }
-                                      }
+                                          })
+                                        })
+                                      })
                                     ]
-                                  }
-                                }
-                              }
+                                  })
+                                })
+                              })
                             ]
-                          }
-                        },
+                          })
+                        }),
                         arguments: [
-                          {
+                          newNode(255, {
                             type: "CallExpression",
-                            start: 255,
                             end: 272,
-                            callee: {
+                            callee: newNode(255, {
                               type: "MemberExpression",
-                              start: 255,
                               end: 270,
-                              object: {
+                              object: newNode(255, {
                                 type: "ThisExpression",
-                                start: 255,
                                 end: 259
-                              },
-                              property: {
+                              }),
+                              property: newNode(260, {
                                 type: "PrivateName",
-                                start: 260,
                                 end: 270,
                                 name: "getSecret"
-                              },
+                              }),
                               computed: false
-                            },
+                            }),
                             arguments: []
-                          }
+                          })
                         ]
-                      }
-                    }
+                      })
+                    })
                   ]
-                }
-              }
-            }
+                })
+              })
+            })
           ]
-        }
-      }
+        })
+      })
     ],
     sourceType: "module"
-  })
+  }))
 })
