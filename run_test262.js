@@ -8,7 +8,6 @@ const stage3 = require(".")
 const Parser = acorn.Parser.extend(stage3)
 
 const unsupportedFeatures = [
-  "export-star-as-namespace-from-module",
   "numeric-separator-literal"
 ]
 

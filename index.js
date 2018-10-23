@@ -7,6 +7,7 @@ module.exports = function(Parser) {
     require("acorn-bigint"),
     require("acorn-class-fields"),
     require("acorn-static-class-features"),
-    require("acorn-private-methods")
+    require("acorn-private-methods"),
+    require("acorn-export-ns-from")
   )
 }
