@@ -1,3 +1,8 @@
+## 1.0.0 (2018-10-24)
+
+* Add `export * as ns from "mod"` support
+* Update acorn-bigint and acorn-import-meta
+
 ## 0.7.0 (2018-10-01)
 
 * Update to new acorn 6 interface
