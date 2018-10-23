@@ -21,7 +21,7 @@ This module provides a plugin that can be used to extend the Acorn `Parser` clas
 ```javascript
 const {Parser} = require('acorn');
 const stage3 = require('acorn-stage3');
-Parser.extend(bigInt).parse('100n');
+Parser.extend(stage3).parse('100n');
 ```
 
 ## License
