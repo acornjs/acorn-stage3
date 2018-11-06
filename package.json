@@ -23,20 +23,20 @@
   },
   "dependencies": {
     "acorn-bigint": "^0.3.1",
-    "acorn-class-fields": "^0.2.0",
+    "acorn-class-fields": "^0.2.1",
     "acorn-dynamic-import": "^4.0.0",
     "acorn-export-ns-from": "^0.1.0",
     "acorn-import-meta": "^1.0.0",
-    "acorn-private-methods": "^0.2.0",
-    "acorn-static-class-features": "^0.1.0"
+    "acorn-private-methods": "^0.2.1",
+    "acorn-static-class-features": "^0.1.1"
   },
   "version": "1.0.0",
   "devDependencies": {
-    "acorn": "^6.0.2",
-    "eslint": "^5.7.0",
-    "eslint-plugin-node": "^7.0.1",
+    "acorn": "^6.0.4",
+    "eslint": "^5.8.0",
+    "eslint-plugin-node": "^8.0.0",
     "mocha": "^5.2.0",
-    "test262": "git+https://github.com/tc39/test262.git#c3e384c8c5fcee43395bebc958e48e23dc2c8d5b",
+    "test262": "git+https://github.com/tc39/test262.git#c0ffc8f6da0f2a7ec87afb87ec5f2664b1ba57ec",
     "test262-parser-runner": "^0.5.0"
   }
 }
