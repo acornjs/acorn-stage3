@@ -1,3 +1,7 @@
+## 2.0.0 (2019-02-09)
+
+* Require acorn >= 6.1.0
+
 ## 1.0.0 (2018-10-24)
 
 * Add `export * as ns from "mod"` support
