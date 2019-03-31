@@ -4,6 +4,7 @@ module.exports = function(Parser) {
   return Parser.extend(
     require("acorn-dynamic-import").default,
     require("acorn-import-meta"),
+    require("acorn-numeric-separator"),
     require("acorn-bigint"),
     require("acorn-class-fields"),
     require("acorn-static-class-features"),

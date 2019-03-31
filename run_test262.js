@@ -7,15 +7,10 @@ const acorn = require("acorn")
 const stage3 = require(".")
 const Parser = acorn.Parser.extend(stage3)
 
-const unsupportedFeatures = [
-  "numeric-separator-literal"
-]
-
 run(
-  (content, options) => Parser.parse(content, {sourceType: options.sourceType, ecmaVersion: 10}),
+  (content, options) => Parser.parse(content, {sourceType: options.sourceType, ecmaVersion: 10, allowHashBang: true}),
   {
     testsDirectory: path.dirname(require.resolve("test262/package.json")),
-    skip: test => (test.attrs.features && unsupportedFeatures.some(f => test.attrs.features.includes(f))),
     whitelist: fs.readFileSync("./test262.whitelist", "utf8").split("\n").filter(v => v && v[0] !== "#")
   }
 )

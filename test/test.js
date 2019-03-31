@@ -15,13 +15,25 @@ function test(testCode, ast) {
     assert.deepStrictEqual(result, ast)
   })
 }
+function testFail(text, expectedError, additionalOptions) {
+  it(text, function () {
+    let failed = false
+    try {
+      Parser.parse(text, Object.assign({ ecmaVersion: 9, plugins: { numericSeparator: true } }, additionalOptions))
+    } catch (e) {
+      assert.strictEqual(e.message, expectedError)
+      failed = true
+    }
+    assert(failed)
+  })
+}
 
 const newNode = (start, props) => Object.assign(new acorn.Node({options: {}}, start), props)
-const newBigIntLiteral = (start, stringValue) => newNode(start, {
+const newBigIntLiteral = (start, stringValue, raw = stringValue) => newNode(start, {
   type: "Literal",
-  end: start + stringValue.length + 1,
+  end: start + raw.length + 1,
   value: typeof BigInt !== "undefined" ? BigInt(stringValue) : null,
-  raw: `${stringValue}n`,
+  raw: `${raw}n`,
   bigint: `${stringValue}n`
 })
 
@@ -31,7 +43,7 @@ describe("acorn-stage3", () => {
   })
 
   const testCode = `async function* xxyz() {
-    let value =   1000000n +  0xdeadbeefn
+    let value = 1_000_000n + 0xdead_beefn
     for await (const { a, ...y } of z) {
       import(import.meta.resolve(a).replace(/.css$/, ".js")).then(({ interestingThing, ...otherStuff }) => {
         const data = { ...y, ...otherStuff }
@@ -43,7 +55,7 @@ describe("acorn-stage3", () => {
     } catch {}
 
     class A {
-      #a =  55n;
+      #a = 5_5n;
       #getA() { return this.#a * 5 }
     }
   }`
@@ -80,12 +92,12 @@ describe("acorn-stage3", () => {
                     end: 38,
                     name: "value"
                   }),
-                  init: newNode(43, {
+                  init: newNode(41, {
                     type: "BinaryExpression",
                     end: 66,
-                    left: newBigIntLiteral(43, "1000000"),
+                    left: newBigIntLiteral(41, "1000000", "1_000_000"),
                     operator: "+",
-                    right: newBigIntLiteral(55, "0xdeadbeef"),
+                    right: newBigIntLiteral(54, "0xdeadbeef", "0xdead_beef"),
                   })
                 })
               ],
@@ -405,7 +417,7 @@ describe("acorn-stage3", () => {
                       end: 349,
                       name: "a"
                     }),
-                    value: newBigIntLiteral(353, "55")
+                    value: newBigIntLiteral(352, "55", "5_5")
                   }),
                   newNode(364, {
                     type: "MethodDefinition",
@@ -828,4 +840,13 @@ describe("acorn-stage3", () => {
     ],
     sourceType: "module"
   }))
+  testFail(`class Example {
+    static #x = 1;
+    #x = 2; // SyntaxError ("Duplicate private field")
+
+    method() {
+        console.log(` + "`Example.#x = ${Example.#x}`" + `);
+        console.log(` + "`this.#x = ${this.#x}`" + `);
+    }
+  }`, "Duplicate private element (3:4)")
 })
