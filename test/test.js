@@ -29,9 +29,10 @@ function testFail(text, expectedError, additionalOptions) {
 }
 
 const newNode = (start, props) => Object.assign(new acorn.Node({options: {}}, start), props)
-const newBigIntLiteral = (start, stringValue, raw = stringValue) => newNode(start, {
+const newBigIntLiteral = (start, stringValue, raw) => newNode(start, {
   type: "Literal",
   end: start + raw.length + 1,
+  // eslint-disable-next-line node/no-unsupported-features/es-builtins
   value: typeof BigInt !== "undefined" ? BigInt(stringValue) : null,
   raw: `${raw}n`,
   bigint: `${stringValue}n`
@@ -840,6 +841,7 @@ describe("acorn-stage3", () => {
     ],
     sourceType: "module"
   }))
+  /* eslint-disable */
   testFail(`class Example {
     static #x = 1;
     #x = 2; // SyntaxError ("Duplicate private field")
@@ -849,4 +851,5 @@ describe("acorn-stage3", () => {
         console.log(` + "`this.#x = ${this.#x}`" + `);
     }
   }`, "Duplicate private element (3:4)")
+  /* eslint-enable */
 })
