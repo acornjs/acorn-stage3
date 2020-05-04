@@ -1,3 +1,8 @@
+## 2.1.0 (2020-05-04)
+
+* Add back numeric separators, they are stage 3 again
+* Add logical-assignments
+
 ## 2.0.0 (2019-02-09)
 
 * Require acorn >= 6.1.0
