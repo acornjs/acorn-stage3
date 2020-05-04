@@ -14,6 +14,7 @@ It implements support for all current [ECMAScript stage 3 proposals](https://git
 - [Private methods and getter/setters for JavaScript classes](https://github.com/tc39/proposal-private-methods) via [acorn-private-methods](https://www.npmjs.org/package/acorn-private-methods)
 - [Static class features](https://github.com/tc39/proposal-static-class-features) via [acorn-static-class-features](https://www.npmjs.org/package/acorn-static-class-features)
 - [Add \`export * as ns from "mod"\` to Export production and Module Semantic](https://github.com/tc39/ecma262/pull/1174) via [acorn-export-ns-from](https://www.npmjs.org/package/acorn-export-ns-from)
+- [Logical assignments](https://github.com/tc39/proposal-logical-assignment) via [acorn-logical-assignment](https://github.com/acornjs/acorn-logical-assignment)
 
 ## Usage
 

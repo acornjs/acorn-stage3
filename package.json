@@ -29,7 +29,8 @@
     "acorn-import-meta": "^1.0.0",
     "acorn-numeric-separator": "^0.3.0",
     "acorn-private-methods": "^0.3.0",
-    "acorn-static-class-features": "^0.2.0"
+    "acorn-static-class-features": "^0.2.0",
+    "acorn-logical-assignment": "^0.1.0"
   },
   "version": "2.0.0",
   "devDependencies": {

@@ -9,7 +9,6 @@ const Parser = acorn.Parser.extend(stage3)
 
 const unsupportedFeatures = [
   "coalesce-expression",
-  "logical-assignment-operators",
   "optional-chaining"
 ]
 
