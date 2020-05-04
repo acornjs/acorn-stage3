@@ -12,6 +12,7 @@
 * Update to new acorn 6 interface
 * Change license to MIT
 * Add static class features support
+* Remove numeric separators, they are stage 2
 
 ## 0.6.0 (2018-02-27)
 
