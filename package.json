@@ -28,7 +28,7 @@
     "acorn-static-class-features": "^0.2.3",
     "acorn-logical-assignment": "^0.1.1"
   },
-  "version": "2.1.0",
+  "version": "3.0.0",
   "devDependencies": {
     "acorn": "^7.3.0",
     "eslint": "^7",

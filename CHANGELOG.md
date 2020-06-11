@@ -1,3 +1,8 @@
+## 3.0.0 (2020-06-11)
+
+* Require acorn ^7.2
+* Remove BigInt, import.meta, dynamic import and export * as ns from "mod", all are supported by acorn >= 7.2
+
 ## 2.1.0 (2020-05-04)
 
 * Add back numeric separators, they are stage 3 again
