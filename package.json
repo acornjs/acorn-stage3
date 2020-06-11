@@ -34,11 +34,11 @@
   },
   "version": "2.1.0",
   "devDependencies": {
-    "acorn": "^6.1.0",
-    "eslint": "^6",
+    "acorn": "^7.3.0",
+    "eslint": "^7",
     "eslint-plugin-node": "^11",
-    "mocha": "^7",
-    "test262": "git+https://github.com/tc39/test262.git#57fa74b170e9554bfe89a29c10de2447fe7d3b27",
+    "mocha": "^8",
+    "test262": "git+https://github.com/tc39/test262.git#adf2cf4204a748463cacb68f07d0d006b00c3821",
     "test262-parser-runner": "^0.5.0"
   }
 }

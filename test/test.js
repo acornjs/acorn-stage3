@@ -7,7 +7,7 @@ const stage3 = require("..")
 
 const Parser = acorn.Parser.extend(stage3)
 
-const parse = testCode => Parser.parse(testCode, { ecmaVersion: 10, sourceType: "module" })
+const parse = testCode => Parser.parse(testCode, { ecmaVersion: 11, sourceType: "module" })
 
 function test(testCode, ast) {
   it(testCode, () => {
@@ -19,7 +19,7 @@ function testFail(text, expectedError, additionalOptions) {
   it(text, function () {
     let failed = false
     try {
-      Parser.parse(text, Object.assign({ ecmaVersion: 9, plugins: { numericSeparator: true } }, additionalOptions))
+      Parser.parse(text, Object.assign({ ecmaVersion: 11, plugins: { numericSeparator: true } }, additionalOptions))
     } catch (e) {
       assert.strictEqual(e.message, expectedError)
       failed = true
@@ -35,7 +35,7 @@ const newBigIntLiteral = (start, stringValue, raw) => newNode(start, {
   // eslint-disable-next-line node/no-unsupported-features/es-builtins
   value: typeof BigInt !== "undefined" ? BigInt(stringValue) : null,
   raw: `${raw}n`,
-  bigint: `${stringValue}n`
+  bigint: stringValue
 })
 
 describe("acorn-stage3", () => {
@@ -168,85 +168,85 @@ describe("acorn-stage3", () => {
                     expression: newNode(114, {
                       type: "CallExpression",
                       end: 270,
+                      optional: false,
                       callee: newNode(114, {
                         type: "MemberExpression",
                         end: 173,
+                        optional: false,
                         object: newNode(114, {
-                          type: "CallExpression",
+                          type: "ImportExpression",
                           end: 168,
-                          callee: newNode(114, {
-                            type: "Import",
-                            end: 120
-                          }),
-                          arguments: [
-                            newNode(121, {
-                              type: "CallExpression",
-                              end: 167,
-                              callee: newNode(121, {
-                                type: "MemberExpression",
-                                end: 151,
-                                object: newNode(121, {
-                                  type: "CallExpression",
-                                  end: 143,
-                                  callee: newNode(121, {
-                                    type: "MemberExpression",
-                                    end: 140,
-                                    object: newNode(121, {
-                                      type: "MetaProperty",
+                          source: newNode(121, {
+                            type: "CallExpression",
+                            end: 167,
+                            optional: false,
+                            callee: newNode(121, {
+                              type: "MemberExpression",
+                              end: 151,
+                              optional: false,
+                              object: newNode(121, {
+                                type: "CallExpression",
+                                end: 143,
+                                optional: false,
+                                callee: newNode(121, {
+                                  type: "MemberExpression",
+                                  end: 140,
+                                  optional: false,
+                                  object: newNode(121, {
+                                    type: "MetaProperty",
+                                    end: 132,
+                                    meta: newNode(121, {
+                                      type: "Identifier",
+                                      end: 127,
+                                      name: "import"
+                                    }),
+                                    property: newNode(128, {
+                                      type: "Identifier",
                                       end: 132,
-                                      meta: newNode(121, {
-                                        type: "Identifier",
-                                        end: 127,
-                                        name: "import"
-                                      }),
-                                      property: newNode(128, {
-                                        type: "Identifier",
-                                        end: 132,
-                                        name: "meta"
-                                      })
-                                    }),
-                                    property: newNode(133, {
-                                      type: "Identifier",
-                                      end: 140,
-                                      name: "resolve"
-                                    }),
-                                    computed: false
-                                  }),
-                                  arguments: [
-                                    newNode(141, {
-                                      type: "Identifier",
-                                      end: 142,
-                                      name: "a"
+                                      name: "meta"
                                     })
-                                  ]
+                                  }),
+                                  property: newNode(133, {
+                                    type: "Identifier",
+                                    end: 140,
+                                    name: "resolve"
+                                  }),
+                                  computed: false
                                 }),
-                                property: newNode(144, {
-                                  type: "Identifier",
-                                  end: 151,
-                                  name: "replace"
-                                }),
-                                computed: false
+                                arguments: [
+                                  newNode(141, {
+                                    type: "Identifier",
+                                    end: 142,
+                                    name: "a"
+                                  })
+                                ]
                               }),
-                              arguments: [
-                                newNode(152, {
-                                  type: "Literal",
-                                  end: 159,
-                                  raw: "/.css$/",
-                                  regex: {
-                                    pattern: ".css$",
-                                    flags: ""
-                                  },
-                                  value: /.css$/
-                                }),
-                                newNode(161, {
-                                  type: "Literal",
-                                  end: 166,
-                                  value: ".js",
-                                  raw: "\".js\""
-                                })
-                              ]
-                            })
-                          ]
+                              property: newNode(144, {
+                                type: "Identifier",
+                                end: 151,
+                                name: "replace"
+                              }),
+                              computed: false
+                            }),
+                            arguments: [
+                              newNode(152, {
+                                type: "Literal",
+                                end: 159,
+                                raw: "/.css$/",
+                                regex: {
+                                  pattern: ".css$",
+                                  flags: ""
+                                },
+                                value: /.css$/
+                              }),
+                              newNode(161, {
+                                type: "Literal",
+                                end: 166,
+                                value: ".js",
+                                raw: "\".js\""
+                              })
+                            ]
+                          })
                         }),
                         property: newNode(169, {
                           type: "Identifier",
@@ -364,9 +364,11 @@ describe("acorn-stage3", () => {
                     expression: newNode(295, {
                       type: "CallExpression",
                       end: 310,
+                      optional: false,
                       callee: newNode(295, {
                         type: "MemberExpression",
                         end: 308,
+                        optional: false,
                         object: newNode(295, {
                           type: "Identifier",
                           end: 301,
@@ -452,6 +454,7 @@ describe("acorn-stage3", () => {
                               left: newNode(381, {
                                 type: "MemberExpression",
                                 end: 388,
+                                optional: false,
                                 object: newNode(381, {
                                   type: "ThisExpression",
                                   end: 385
@@ -497,24 +500,20 @@ describe("acorn-stage3", () => {
         expression: newNode(0, {
           type: "CallExpression",
           end: 46,
+          optional: false,
           callee: newNode(0, {
             type: "MemberExpression",
             end: 16,
+            optional: false,
             object: newNode(0, {
-              type: "CallExpression",
+              type: "ImportExpression",
               end: 11,
-              callee: newNode(0, {
-                type: "Import",
-                end: 6
-              }),
-              arguments: [
-                newNode(7, {
-                  type: "Literal",
-                  end: 10,
-                  value: "a",
-                  raw: "'a'"
-                })
-              ]
+              source: newNode(7, {
+                type: "Literal",
+                end: 10,
+                value: "a",
+                raw: "'a'"
+              })
             }),
             property: newNode(12, {
               type: "Identifier",
@@ -542,9 +541,11 @@ describe("acorn-stage3", () => {
                     expression: newNode(24, {
                       type: "CallExpression",
                       end: 44,
+                      optional: false,
                       callee: newNode(24, {
                         type: "MemberExpression",
                         end: 42,
+                        optional: false,
                         object: newNode(24, {
                           type: "MetaProperty",
                           end: 35,
@@ -622,6 +623,7 @@ describe("acorn-stage3", () => {
               value: newNode(24, {
                 type: "MemberExpression",
                 end: 37,
+                optional: false,
                 object: newNode(24, {
                   type: "ThisExpression",
                   end: 28
@@ -679,6 +681,7 @@ describe("acorn-stage3", () => {
                       argument: newNode(90, {
                         type: "MemberExpression",
                         end: 102,
+                        optional: false,
                         object: newNode(90, {
                           type: "ThisExpression",
                           end: 94
@@ -783,6 +786,7 @@ describe("acorn-stage3", () => {
                                           left: newNode(214, {
                                             type: "MemberExpression",
                                             end: 226,
+                                            optional: false,
                                             object: newNode(214, {
                                               type: "ThisExpression",
                                               end: 218
@@ -812,9 +816,11 @@ describe("acorn-stage3", () => {
                           newNode(255, {
                             type: "CallExpression",
                             end: 272,
+                            optional: false,
                             callee: newNode(255, {
                               type: "MemberExpression",
                               end: 270,
+                              optional: false,
                               object: newNode(255, {
                                 type: "ThisExpression",
                                 end: 259

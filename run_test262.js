@@ -8,8 +8,6 @@ const stage3 = require(".")
 const Parser = acorn.Parser.extend(stage3)
 
 const unsupportedFeatures = [
-  "coalesce-expression",
-  "optional-chaining"
 ]
 
 run(
