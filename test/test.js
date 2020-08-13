@@ -7,7 +7,7 @@ const stage3 = require("..")
 
 const Parser = acorn.Parser.extend(stage3)
 
-const parse = testCode => Parser.parse(testCode, { ecmaVersion: 11, sourceType: "module" })
+const parse = testCode => Parser.parse(testCode, { ecmaVersion: 12, sourceType: "module" })
 
 function test(testCode, ast) {
   it(testCode, () => {
@@ -19,7 +19,7 @@ function testFail(text, expectedError, additionalOptions) {
   it(text, function () {
     let failed = false
     try {
-      Parser.parse(text, Object.assign({ ecmaVersion: 11, plugins: { numericSeparator: true } }, additionalOptions))
+      Parser.parse(text, Object.assign({ ecmaVersion: 12, additionalOptions }))
     } catch (e) {
       assert.strictEqual(e.message, expectedError)
       failed = true

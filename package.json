@@ -19,12 +19,10 @@
     "lint": "eslint -c .eslintrc.json ."
   },
   "peerDependencies": {
-    "acorn": "^7 || ^8"
+    "acorn": "^7.4 || ^8"
   },
   "dependencies": {
     "acorn-class-fields": "^0.3.7",
-    "acorn-logical-assignment": "^0.1.4",
-    "acorn-numeric-separator": "^0.3.6",
     "acorn-private-methods": "^0.3.3",
     "acorn-static-class-features": "^0.2.4"
   },

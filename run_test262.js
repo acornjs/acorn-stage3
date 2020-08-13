@@ -11,7 +11,7 @@ const unsupportedFeatures = [
 ]
 
 run(
-  (content, options) => Parser.parse(content, {sourceType: options.sourceType, ecmaVersion: 11, allowHashBang: true, allowAwaitOutsideFunction: true}),
+  (content, options) => Parser.parse(content, {sourceType: options.sourceType, ecmaVersion: 12, allowHashBang: true, allowAwaitOutsideFunction: true}),
   {
     testsDirectory: path.dirname(require.resolve("test262/package.json")),
     skip: test => (test.attrs.features && unsupportedFeatures.some(f => test.attrs.features.includes(f))),
