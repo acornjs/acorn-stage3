@@ -19,22 +19,22 @@
     "lint": "eslint -c .eslintrc.json ."
   },
   "peerDependencies": {
-    "acorn": "^7.2.0"
+    "acorn": "^7 || ^8"
   },
   "dependencies": {
-    "acorn-class-fields": "^0.3.6",
-    "acorn-numeric-separator": "^0.3.2",
-    "acorn-private-methods": "^0.3.2",
-    "acorn-static-class-features": "^0.2.3",
-    "acorn-logical-assignment": "^0.1.1"
+    "acorn-class-fields": "^0.3.7",
+    "acorn-logical-assignment": "^0.1.4",
+    "acorn-numeric-separator": "^0.3.6",
+    "acorn-private-methods": "^0.3.3",
+    "acorn-static-class-features": "^0.2.4"
   },
   "version": "3.0.0",
   "devDependencies": {
-    "acorn": "^7.3.0",
+    "acorn": "^8",
     "eslint": "^7",
     "eslint-plugin-node": "^11",
     "mocha": "^8",
-    "test262": "git+https://github.com/tc39/test262.git#adf2cf4204a748463cacb68f07d0d006b00c3821",
+    "test262": "git+https://github.com/tc39/test262.git#e0758bbeacac7776dae2a69f88eb4742f0930d7c",
     "test262-parser-runner": "^0.5.0"
   }
 }
