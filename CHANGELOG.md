@@ -1,3 +1,7 @@
+## 3.1.0 (2020-08-13)
+
+* Mark as supporting acorn@8
+
 ## 3.0.0 (2020-06-11)
 
 * Require acorn ^7.2
