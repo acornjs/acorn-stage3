@@ -26,7 +26,7 @@
     "acorn-private-methods": "^0.3.3",
     "acorn-static-class-features": "^0.2.4"
   },
-  "version": "3.1.0",
+  "version": "4.0.0",
   "devDependencies": {
     "acorn": "^8",
     "eslint": "^7",
