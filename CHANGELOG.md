@@ -1,3 +1,8 @@
+## 5.0.0 (2021-02-08)
+
+* Pick up major updates to class field dependencies plugins with a different AST structure
+  * To match https://github.com/estree/estree/blob/390a050fd2d6a7b69688f1434e0929d7c7455d05/experimental/class-features.md
+
 ## 4.0.0 (2020-08-13)
 
 * Require acorn ^7.4 or ^8
