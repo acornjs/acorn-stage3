@@ -412,11 +412,11 @@ describe("acorn-stage3", () => {
                 end: 400,
                 body: [
                   newNode(347, {
-                    type: "FieldDefinition",
+                    type: "PropertyDefinition",
                     end: 356,
                     computed: false,
                     key: newNode(347, {
-                      type: "PrivateName",
+                      type: "PrivateIdentifier",
                       end: 349,
                       name: "a"
                     }),
@@ -429,7 +429,7 @@ describe("acorn-stage3", () => {
                     static: false,
                     computed: false,
                     key: newNode(364, {
-                      type: "PrivateName",
+                      type: "PrivateIdentifier",
                       end: 369,
                       name: "getA"
                     }),
@@ -460,7 +460,7 @@ describe("acorn-stage3", () => {
                                   end: 385
                                 }),
                                 property: newNode(386, {
-                                  type: "PrivateName",
+                                  type: "PrivateIdentifier",
                                   end: 388,
                                   name: "a"
                                 }),
@@ -612,11 +612,11 @@ describe("acorn-stage3", () => {
           end: 283,
           body: [
             newNode(14, {
-              type: "FieldDefinition",
+              type: "PropertyDefinition",
               end: 37,
               computed: false,
               key: newNode(14, {
-                type: "PrivateName",
+                type: "PrivateIdentifier",
                 end: 21,
                 name: "secret"
               }),
@@ -629,7 +629,7 @@ describe("acorn-stage3", () => {
                   end: 28
                 }),
                 property: newNode(29, {
-                  type: "PrivateName",
+                  type: "PrivateIdentifier",
                   end: 37,
                   name: "default"
                 }),
@@ -637,11 +637,11 @@ describe("acorn-stage3", () => {
               })
             }),
             newNode(42, {
-              type: "FieldDefinition",
+              type: "PropertyDefinition",
               end: 62,
               computed: false,
               key: newNode(42, {
-                type: "PrivateName",
+                type: "PrivateIdentifier",
                 end: 50,
                 name: "default"
               }),
@@ -659,7 +659,7 @@ describe("acorn-stage3", () => {
               static: false,
               computed: false,
               key: newNode(68, {
-                type: "PrivateName",
+                type: "PrivateIdentifier",
                 end: 78,
                 name: "getSecret"
               }),
@@ -687,7 +687,7 @@ describe("acorn-stage3", () => {
                           end: 94
                         }),
                         property: newNode(95, {
-                          type: "PrivateName",
+                          type: "PrivateIdentifier",
                           end: 102,
                           name: "secret"
                         }),
@@ -737,11 +737,11 @@ describe("acorn-stage3", () => {
                             end: 253,
                             body: [
                               newNode(166, {
-                                type: "FieldDefinition",
+                                type: "PropertyDefinition",
                                 end: 173,
                                 computed: false,
                                 key: newNode(166, {
-                                  type: "PrivateName",
+                                  type: "PrivateIdentifier",
                                   end: 173,
                                   name: "secret"
                                 }),
@@ -792,7 +792,7 @@ describe("acorn-stage3", () => {
                                               end: 218
                                             }),
                                             property: newNode(219, {
-                                              type: "PrivateName",
+                                              type: "PrivateIdentifier",
                                               end: 226,
                                               name: "secret"
                                             }),
@@ -826,7 +826,7 @@ describe("acorn-stage3", () => {
                                 end: 259
                               }),
                               property: newNode(260, {
-                                type: "PrivateName",
+                                type: "PrivateIdentifier",
                                 end: 270,
                                 name: "getSecret"
                               }),

@@ -22,11 +22,11 @@
     "acorn": "^7.4 || ^8"
   },
   "dependencies": {
-    "acorn-class-fields": "^0.3.7",
-    "acorn-private-methods": "^0.3.3",
-    "acorn-static-class-features": "^0.2.4"
+    "acorn-class-fields": "^1.0.0",
+    "acorn-private-methods": "^1.0.0",
+    "acorn-static-class-features": "^1.0.0"
   },
-  "version": "4.0.0",
+  "version": "5.0.0",
   "devDependencies": {
     "acorn": "^8",
     "eslint": "^7",
